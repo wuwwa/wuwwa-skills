@@ -476,5 +476,32 @@
     "prompt": "Save Land or Water Eval as a reference in this project.\nFollow https://github.com/wuwwa/wuwwa-skills/blob/main/USE.md\nEntry: land-or-water-eval",
     "useWhen": "You want to test a model’s sense of geography.",
     "youGet": "A coordinate-classification experiment brief and source posts."
+  },
+  {
+    "id": "hairline",
+    "name": "Hairline",
+    "kind": "Library",
+    "category": "Motion",
+    "description": "Interactive isometric line illustrations for the web.",
+    "source": "https://github.com/lucasmarkes/hairline",
+    "demo": "https://hairline.lucasmarkes.com",
+    "platforms": ["Web"],
+    "attribution": "Lucas Marques",
+    "revision": "37d2e78dcb333ab30c3338e28ed4a690364ea014",
+    "handoffValidation": "README, package requirements and skill entry points reviewed; runtime and custom generation not tested",
+    "notes": [
+      "Includes upstream skills to create a figure from an idea or adapt an SVG.",
+      "Library: ESM; optional React entry requires React 18+."
+    ],
+    "added": "2026-11-07",
+    "checked": "2026-11-07",
+    "reviewAfter": "2027-02-05",
+    "status": "Linked",
+    "handoffChecked": "2026-11-07",
+    "bundlePath": "bundles/hairline",
+    "bundleSummary": "Integration notes and upstream skill setup",
+    "prompt": "Add Hairline to this project.\nFollow https://github.com/wuwwa/wuwwa-skills/blob/main/USE.md\nEntry: hairline",
+    "useWhen": "Your page needs a line illustration that reacts to the pointer.",
+    "youGet": "React and DOM setup notes, plus links to custom-figure agent skills."
   }
 ]

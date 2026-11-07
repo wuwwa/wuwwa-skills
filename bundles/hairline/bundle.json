@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "hairline",
+  "checked": "2026-11-07",
+  "reviewAfter": "2027-02-05",
+  "sources": [
+    "https://github.com/lucasmarkes/hairline/tree/37d2e78dcb333ab30c3338e28ed4a690364ea014",
+    "https://hairline.lucasmarkes.com"
+  ],
+  "files": [
+    {
+      "source": "bundles/hairline/guide.md",
+      "destination": "docs/references/hairline.md"
+    }
+  ]
+}

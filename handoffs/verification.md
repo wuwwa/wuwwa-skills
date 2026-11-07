@@ -19,6 +19,7 @@
 | Clear Technical Explanations | Public excerpt retrieved; its long-form note was not exposed | Standards compliance or model-quality claims |
 | Land or Water Eval | Karpathy's explanation and quoted celestepoasts result source grouped | Model calls, grid reconstruction or benchmark reproduction |
 | macOS Agent VM | User workflow saved with Apple Virtualization and agent-desktop primary-source links | Guest setup or isolation on a Mac |
+| Hairline | README, 0.5.1 package manifest, MIT license and both skill entry points reviewed at `37d2e78dcb333ab30c3338e28ed4a690364ea014`; integration guide packaged | Runtime, custom figure generation and target-project integration |
 
 Sources: [Codex project skill locations](https://learn.chatgpt.com/docs/build-skills), [Arc skill](https://uiarc.dev/r/skills/arc/SKILL.md), [Arc installation](https://uiarc.dev/docs/installation), [R3F installation](https://r3f.docs.pmnd.rs/getting-started/installation), [Liquid Glass README](https://github.com/dashersw/liquid-glass-js/blob/main/README.md), [Shader Gradient README](https://github.com/ruucm/shadergradient/blob/main/README.md), [Liquid Logo README](https://github.com/collidingScopes/liquid-logo/blob/main/README.MD).
 

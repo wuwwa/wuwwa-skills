@@ -28,6 +28,7 @@ Agents: start with [USE.md](USE.md). Prepared files, setup notes and examples li
 | [Holographic Ticket](https://x.com/shirotatakajo/status/2116165057222762647) | Iridescent paper, perforated edges and a detachable stub. | Reference | 2026-11-07 |
 | [Clear Technical Explanations](https://x.com/karpathy/status/2105819303471976479) | A controlled-language prompt for clearer model explanations. | Reference | 2026-11-07 |
 | [Land or Water Eval](https://x.com/karpathy/status/2105909609487872075) | Probe model geography with coordinate classifications. | Reference | 2026-11-07 |
+| [Hairline](https://github.com/lucasmarkes/hairline) | Interactive isometric line illustrations for the web. | Library | 2026-11-07 |
 
 The optional browser supports stars, task search and filters. Run `npm install` then `npm run dev`.
 
