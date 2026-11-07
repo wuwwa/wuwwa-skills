@@ -153,6 +153,9 @@ footer {
   display: grid;
   gap: 16px;
 }
+.skill-modal[role="dialog"] {
+  width: min(calc(100% - 32px), 560px);
+}
 .details textarea {
   overflow-wrap: anywhere;
 }
@@ -258,6 +261,17 @@ footer {
   }
 }
 @media (max-width: 520px) {
+  .brand {
+    font-size: var(--text-base);
+    gap: 8px;
+  }
+  .repo-label {
+    display: none;
+  }
+  .header-actions > a {
+    min-width: 44px;
+    justify-content: center;
+  }
   .page {
     padding-inline: 16px;
   }

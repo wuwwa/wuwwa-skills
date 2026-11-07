@@ -15,7 +15,7 @@ import {
 import { Button } from "./components/arc/button/button";
 import { SearchField } from "./components/arc/search-field/search-field";
 import SegmentedControl from "./components/arc/segmented-control/segmented-control";
-import { Drawer, DrawerContent } from "./components/arc/drawer/drawer";
+import { Dialog, DialogContent } from "./components/arc/dialog/dialog";
 import { Select } from "./components/arc/select/select";
 import { EmptyState } from "./components/arc/empty-state/empty-state";
 import { Textarea } from "./components/arc/textarea/textarea";
@@ -256,15 +256,16 @@ export default function App() {
         <header className="header">
           <a className="brand" href="./">
             <Library size={24} strokeWidth={1.75} aria-hidden="true" />
-            Skill shelf
+            WuWwa’s collection
           </a>
           <div className="header-actions">
             <a
               href="https://github.com/wuwwa/wuwwa-skills"
+              aria-label="Repository"
               target="_blank"
               rel="noreferrer"
             >
-              Repository
+              <span className="repo-label">Repository</span>
               <ArrowUpRight size={16} aria-hidden="true" />
             </a>
             <Button
@@ -286,7 +287,7 @@ export default function App() {
         </header>
         <main id="collection">
           <div className="heading">
-            <h1>Your collection</h1>
+            <h1>Skills & tools</h1>
             <span className="count" role="status">
               {shown.length} {shown.length === 1 ? "item" : "items"}
             </span>
@@ -396,9 +397,10 @@ export default function App() {
           </a>
         </footer>
       </div>
-      <Drawer open={open} onOpenChange={setOpen}>
+      <Dialog open={open} onOpenChange={setOpen}>
         {selected && (
-          <DrawerContent
+          <DialogContent
+            className="skill-modal"
             title={selected.name}
             description={selected.description}
             onCloseAutoFocus={(event) => {
@@ -407,9 +409,9 @@ export default function App() {
             }}
           >
             <Details key={selected.id + mode} item={selected} mode={mode} />
-          </DrawerContent>
+          </DialogContent>
         )}
-      </Drawer>
+      </Dialog>
     </>
   );
 }
