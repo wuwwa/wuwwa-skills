@@ -1,4 +1,4 @@
 interface:
-  display_name: "UI Design Polish"
-  short_description: "Refine visual hierarchy and purposeful UI motion"
-  default_prompt: "Use $ui-design-polish to refine this UI and its interactions while respecting the project design system."
+  display_name: "UI Design"
+  short_description: "Clean up layout, typography, color, and clutter"
+  default_prompt: "Use $ui-design-polish to clean up this screen."

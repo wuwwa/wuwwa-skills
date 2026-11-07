@@ -1,30 +1,15 @@
 ---
 name: skill-name
-description: Describe the specific task this skill handles and when to use it.
+description: "What this skill does and when to use it."
 metadata:
   created: "YYYY-MM-DD"
   updated: "YYYY-MM-DD"
-  last-reviewed: ""
-  tested-with: ""
-  review-after: ""
+  review-after: "YYYY-MM-DD"
   status: "draft"
-  source: ""
-  source-date: ""
 ---
 
 # Skill title
 
-Replace this starter with the purpose and the guidance that improves the task.
+Short, practical instructions.
 
-## Instructions
-
-Describe the decisions, constraints, and workflow the agent needs. Include model or tool assumptions that affect the result. Link supporting files only when they are needed.
-
-## Review history
-
-- YYYY-MM-DD: Added as a draft; not yet reviewed.
-
-<!-- Replace example dates with the actual dates. After a real review, record
-the model/tool versions, representative task, outcome, and evidence here.
-Fill last-reviewed, tested-with, and review-after before setting status active.
-When deprecating, add deprecated-on to metadata and explain why here. -->
+Source: original reference, if any.

@@ -1,0 +1,4 @@
+interface:
+  display_name: "UI Motion"
+  short_description: "Smooth entrances, exits, feedback, and dragging"
+  default_prompt: "Use $ui-motion to polish this interface's animations."
