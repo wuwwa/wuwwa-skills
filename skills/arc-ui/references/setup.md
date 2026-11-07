@@ -23,6 +23,7 @@ Components already used in Collection:
 | 2–5 data views | `segmented-control` | Default export; `options`, `value`, `onValueChange` |
 | Fixed choice list | `select` | `label`, `options`, `value`, `onValueChange` |
 | Centered modal | `dialog` | `Dialog` root and `DialogContent` with title/description |
+| Supporting details | `accordion` | `items`, `defaultOpen={-1}` to start collapsed |
 | Empty results | `empty-state` | Title, description and a useful next action |
 | Copyable instructions | `textarea` | Label plus ordinary textarea attributes |
 
@@ -31,3 +32,5 @@ Use `--background`, `--surface`, `--foreground`, `--text-secondary`, `--border` 
 `data-theme="dark"` and `data-accent` live on `<html>`. Check focus return, Escape, pointer dismissal, reduced motion and long text in overlays. A successful build does not prove the interface is usable.
 
 Collection has exercised these components in its own React/Vite app. Other host frameworks still require their own build and browser checks. The local adapter does not include upstream component source or a Pro entitlement.
+
+Collection's accordion adds controlled `value`/`onValueChange` props for revealing copy fallback, and keeps collapsed content inert. These are local extensions to the upstream component.

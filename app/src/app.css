@@ -206,20 +206,6 @@ footer {
   display: grid;
   gap: 8px;
 }
-.source-details summary {
-  min-height: 44px;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  color: var(--text-secondary);
-}
-.source-details summary::before {
-  content: "+";
-  width: 24px;
-}
-.source-details[open] summary::before {
-  content: "−";
-}
 .revision {
   overflow-wrap: anywhere;
 }

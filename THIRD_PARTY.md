@@ -1,10 +1,11 @@
 # Arc UI
 
 Free components installed from the [official Arc registry](https://uiarc.dev/docs/installation) on 2026-11-07:
-button, search-field, segmented-control, dialog, select, empty-state, textarea, foundation and motion tokens.
+button, search-field, segmented-control, dialog, select, empty-state, textarea, accordion, foundation and motion tokens.
 
 Source is kept in `app/src/components/arc/`. See [Arc licensing](https://uiarc.dev/license).
 Local accessibility fixes: the dialog close button and touch selection targets are at least 44px.
+The accordion adds controlled `value`/`onValueChange` props for copy fallback and makes collapsed panels inert. Its motion and styles come from the [official registry](https://uiarc.dev/r/accordion.json), checked 2026-11-07.
 The catalog's external projects retain their original source and demo links in `catalog.json`.
 
 # Bundled upstream skills

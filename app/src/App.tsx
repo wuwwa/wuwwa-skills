@@ -7,6 +7,7 @@ import { Dialog, DialogContent } from "./components/arc/dialog/dialog";
 import { Select } from "./components/arc/select/select";
 import { EmptyState } from "./components/arc/empty-state/empty-state";
 import { Textarea } from "./components/arc/textarea/textarea";
+import { Accordion } from "./components/arc/accordion/accordion";
 import catalog from "../../catalog.json";
 import { useFavorites } from "./useFavorites";
 
@@ -108,26 +109,30 @@ function MotionDemo() {
 
 function Details({ item, mode }: { item: Item; mode: string }) {
   const [copied, setCopied] = useState(false);
-  const [copyError, setCopyError] = useState(false);
+  const [copyErrorCount, setCopyErrorCount] = useState(0);
+  const [detailsOpen, setDetailsOpen] = useState(false);
   const [today, setToday] = useState("");
   const prompt = useRef<HTMLTextAreaElement>(null);
-  const moreDetails = useRef<HTMLDetailsElement>(null);
   useEffect(() => {
     setToday(new Date().toISOString().slice(0, 10));
   }, []);
+  useEffect(() => {
+    if (!copyErrorCount || !detailsOpen) return;
+    const frame = window.requestAnimationFrame(() => {
+      prompt.current?.focus();
+      prompt.current?.select();
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, [copyErrorCount, detailsOpen]);
   const copy = async () => {
     try {
       await navigator.clipboard.writeText(item.prompt);
       setCopied(true);
-      setCopyError(false);
+      setCopyErrorCount(0);
     } catch {
       setCopied(false);
-      setCopyError(true);
-      if (moreDetails.current) moreDetails.current.open = true;
-      window.requestAnimationFrame(() => {
-        prompt.current?.focus();
-        prompt.current?.select();
-      });
+      setCopyErrorCount((count) => count + 1);
+      setDetailsOpen(true);
     }
   };
   return (
@@ -150,72 +155,81 @@ function Details({ item, mode }: { item: Item; mode: string }) {
           Download files
         </a>
       </div>
-      <details className="source-details" ref={moreDetails}>
-        <summary>Details</summary>
-        <div className="detail-content">
-          <Textarea
-            label="Agent instructions"
-            id="agent-prompt"
-            ref={prompt}
-            value={item.prompt}
-            readOnly
-            rows={6}
-            error={
-              copyError ? "Copy the selected instructions manually." : undefined
-            }
-          />
-          <div className="detail-links">
-            <a href={item.source} target="_blank" rel="noreferrer">
-              View source
-              <ArrowUpRight size={16} aria-hidden="true" />
-            </a>
-            {item.demo && !isLocal(item) && (
-              <a href={item.demo} target="_blank" rel="noreferrer">
-                Creator’s demo
-                <ArrowUpRight size={16} aria-hidden="true" />
-              </a>
-            )}
-          </div>
-          {item.notes && (
-            <ul className="repo-notes">
-              {item.notes.map((note) => (
-                <li key={note}>{note}</li>
-              ))}
-            </ul>
-          )}
-          <p className="muted">{item.handoffValidation}.</p>
-          <dl className="dates">
-            <dt>Handoff checked</dt>
-            <dd>{formatDate(item.handoffChecked)}</dd>
-            <dt>Added</dt>
-            <dd>{formatDate(item.added)}</dd>
-            <dt>{item.checked ? "Links checked" : "Updated"}</dt>
-            <dd>{formatDate(item.checked || item.updated || item.added)}</dd>
-            <dt>Review after</dt>
-            <dd>{formatDate(item.reviewAfter)}</dd>
-            <dt>Status</dt>
-            <dd>{today > item.reviewAfter ? "Needs review" : item.status}</dd>
-            {item.platforms && (
-              <>
-                <dt>Platforms</dt>
-                <dd>{item.platforms.join(", ")}</dd>
-              </>
-            )}
-            {item.attribution && (
-              <>
-                <dt>Creator</dt>
-                <dd>{item.attribution}</dd>
-              </>
-            )}
-            {item.revision && (
-              <>
-                <dt>Revision</dt>
-                <dd className="revision">{item.revision.slice(0, 12)}</dd>
-              </>
-            )}
-          </dl>
-        </div>
-      </details>
+      <Accordion
+        defaultOpen={-1}
+        value={detailsOpen ? "0" : ""}
+        onValueChange={(value) => setDetailsOpen(value === "0")}
+        items={[{
+          title: "Details",
+          content: (
+            <div className="detail-content">
+              <Textarea
+                label="Agent instructions"
+                id="agent-prompt"
+                ref={prompt}
+                value={item.prompt}
+                readOnly
+                rows={6}
+                error={
+                  copyErrorCount
+                    ? "Copy the selected instructions manually."
+                    : undefined
+                }
+              />
+              <div className="detail-links">
+                <a href={item.source} target="_blank" rel="noreferrer">
+                  View source
+                  <ArrowUpRight size={16} aria-hidden="true" />
+                </a>
+                {item.demo && !isLocal(item) && (
+                  <a href={item.demo} target="_blank" rel="noreferrer">
+                    Creator’s demo
+                    <ArrowUpRight size={16} aria-hidden="true" />
+                  </a>
+                )}
+              </div>
+              {item.notes && (
+                <ul className="repo-notes">
+                  {item.notes.map((note) => (
+                    <li key={note}>{note}</li>
+                  ))}
+                </ul>
+              )}
+              <p className="muted">{item.handoffValidation}.</p>
+              <dl className="dates">
+                <dt>Handoff checked</dt>
+                <dd>{formatDate(item.handoffChecked)}</dd>
+                <dt>Added</dt>
+                <dd>{formatDate(item.added)}</dd>
+                <dt>{item.checked ? "Links checked" : "Updated"}</dt>
+                <dd>{formatDate(item.checked || item.updated || item.added)}</dd>
+                <dt>Review after</dt>
+                <dd>{formatDate(item.reviewAfter)}</dd>
+                <dt>Status</dt>
+                <dd>{today > item.reviewAfter ? "Needs review" : item.status}</dd>
+                {item.platforms && (
+                  <>
+                    <dt>Platforms</dt>
+                    <dd>{item.platforms.join(", ")}</dd>
+                  </>
+                )}
+                {item.attribution && (
+                  <>
+                    <dt>Creator</dt>
+                    <dd>{item.attribution}</dd>
+                  </>
+                )}
+                {item.revision && (
+                  <>
+                    <dt>Revision</dt>
+                    <dd className="revision">{item.revision.slice(0, 12)}</dd>
+                  </>
+                )}
+              </dl>
+            </div>
+          ),
+        }]}
+      />
     </div>
   );
 }
