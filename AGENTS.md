@@ -10,3 +10,4 @@
 - Use Arc UI's free components and foundation for the interface. Preserve upstream files and attribution.
 - Apply the collection's relevant skills to the app itself: UI Design for clarity, UI Motion for transitions, and Arc for components. Prefer centered modals with blurred backdrops for details and previews. Use specialist effects only when the task calls for them.
 - The catalog lives in `catalog.json`; keep README links in sync. Label external libraries/tools accurately, retain source links and checked dates, and distinguish local demos from external demos.
+- Handoffs must specify source, project-local destination or installation steps, compatibility checks, and verification. Preserve existing files. Track handoff review dates separately from actual installation/application tests; never imply copying a handoff installs anything.

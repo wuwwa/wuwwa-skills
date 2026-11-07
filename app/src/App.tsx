@@ -130,10 +130,14 @@ function Details({ item, mode }: { item: Item; mode: string }) {
   };
   return (
     <div className="details">
+      <p className="muted">
+        Copy this handoff into your project’s agent. Nothing is installed by
+        this page.
+      </p>
       {mode === "preview" &&
         (item.demo === "design" ? <DesignDemo /> : <MotionDemo />)}
       <Textarea
-        label="Give this to your agent"
+        label="Project handoff"
         id="agent-prompt"
         ref={prompt}
         value={item.prompt}
@@ -142,7 +146,7 @@ function Details({ item, mode }: { item: Item; mode: string }) {
       />
       <div className="detail-actions">
         <Button variant="primary" onClick={copy}>
-          {copied ? "Prompt copied" : "Copy prompt"}
+          {copied ? "Handoff copied" : "Copy handoff"}
         </Button>
         <a href={item.source} target="_blank" rel="noreferrer">
           {item.kind === "Skill" ? "Read skill" : "View source"}
@@ -168,6 +172,8 @@ function Details({ item, mode }: { item: Item; mode: string }) {
         </a>
       )}
       <dl className="dates">
+        <dt>Handoff checked</dt>
+        <dd>{formatDate(item.handoffChecked)}</dd>
         <dt>Added</dt>
         <dd>{formatDate(item.added)}</dd>
         <dt>{item.checked ? "Links checked" : "Updated"}</dt>
@@ -183,6 +189,7 @@ function Details({ item, mode }: { item: Item; mode: string }) {
           </>
         )}
       </dl>
+      <p className="muted">{item.handoffValidation}.</p>
     </div>
   );
 }
@@ -356,9 +363,9 @@ export default function App() {
                     <Button
                       variant="secondary"
                       onClick={() => show(item, "use")}
-                      aria-label={`Use ${item.name}`}
+                      aria-label={`Add ${item.name} to project`}
                     >
-                      Use
+                      Add to project
                     </Button>
                   </div>
                 </article>

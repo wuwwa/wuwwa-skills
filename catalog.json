@@ -12,7 +12,9 @@
     "updated": "2026-11-07",
     "reviewAfter": "2027-02-05",
     "status": "Draft",
-    "prompt": "Pull the ui-design-polish skill from https://github.com/wuwwa/wuwwa-skills/tree/main/skills/ui-design-polish into this project. Use it to improve the UI while preserving the project design system."
+    "prompt": "Add the UI Design agent skill to this project.\n\nSource: https://github.com/wuwwa/wuwwa-skills/tree/928c0f76f1ac3e12f9ce02f4616d887905a13f7e/skills/ui-design-polish\n1. Fetch that exact Git revision into a temporary checkout. Copy the entire skills/ui-design-polish/ directory, including agents/openai.yaml, into .agents/skills/ui-design-polish/ for Codex. For another agent, use its documented project-local skill directory. Compare before replacing existing files.\n2. Read the installed SKILL.md. Preserve attribution and dates. Resolve linked references using their original URLs; fetch relevant references before applying tool-specific guidance. This skill needs no runtime package.\n3. Verify SKILL.md has name and description, all packaged files are present, and relative links resolve. Confirm discovery if the host exposes a skill list; otherwise report discovery as unverified. Explicitly read the installed skill for the current task.\n4. Review hierarchy, contrast, keyboard focus and mobile layout on the affected screen. Run relevant project checks after implementation. Installation alone does not establish design quality.\n\nRead this project's instructions first. Preserve existing work and use its package manager. If a required source is inaccessible or incompatible, report the exact blocker; do not invent instructions or claim success. Record source URLs, resolved revision/version, date, changed files and checks in docs/references/ui-design-polish.md. Integrate only the feature I requested; otherwise stop after setup. Report what is ready and what remains unverified.",
+    "handoffChecked": "2026-11-07",
+    "handoffValidation": "Skill download tested; application depends on target project"
   },
   {
     "id": "ui-motion",
@@ -27,7 +29,9 @@
     "updated": "2026-11-07",
     "reviewAfter": "2027-02-05",
     "status": "Draft",
-    "prompt": "Pull the ui-motion skill from https://github.com/wuwwa/wuwwa-skills/tree/main/skills/ui-motion into this project. Use it to refine UI animations and respect reduced-motion preferences."
+    "prompt": "Add the UI Motion agent skill to this project.\n\nSource: https://github.com/wuwwa/wuwwa-skills/tree/928c0f76f1ac3e12f9ce02f4616d887905a13f7e/skills/ui-motion\n1. Fetch that exact Git revision into a temporary checkout. Copy the entire skills/ui-motion/ directory, including agents/openai.yaml, into .agents/skills/ui-motion/ for Codex. For another agent, use its documented project-local skill directory. Compare before replacing existing files.\n2. Read the installed SKILL.md. Preserve attribution and dates. Resolve linked references using their original URLs; fetch relevant references before applying tool-specific guidance. This skill needs no runtime package.\n3. Verify SKILL.md has name and description, all packaged files are present, and relative links resolve. Confirm discovery if the host exposes a skill list; otherwise report discovery as unverified. Explicitly read the installed skill for the current task.\n4. Check keyboard focus, rapid opening/closing, reduced motion and input responsiveness on the affected interaction. Run relevant project checks after implementation. Installation alone does not establish design quality.\n\nRead this project's instructions first. Preserve existing work and use its package manager. If a required source is inaccessible or incompatible, report the exact blocker; do not invent instructions or claim success. Record source URLs, resolved revision/version, date, changed files and checks in docs/references/ui-motion.md. Integrate only the feature I requested; otherwise stop after setup. Report what is ready and what remains unverified.",
+    "handoffChecked": "2026-11-07",
+    "handoffValidation": "Skill download tested; application depends on target project"
   },
   {
     "id": "arc-ui",
@@ -43,7 +47,9 @@
     "reviewAfter": "2027-02-05",
     "status": "Linked",
     "attribution": "Arc UI",
-    "prompt": "Use the Arc UI skill at https://uiarc.dev/r/skills/arc/SKILL.md and its relevant linked references to build with components from https://uiarc.dev/components. Read current installation instructions at https://uiarc.dev/docs/ai. Start with free components; use Pro only if I have access. Preserve the requirements of this project."
+    "prompt": "Add the Arc UI skill and prepare Arc components for this project.\n\nSkill: https://uiarc.dev/r/skills/arc/SKILL.md\nSetup: https://uiarc.dev/docs/installation\n1. Download SKILL.md and every relative Markdown reference it lists from https://uiarc.dev/r/skills/arc/. Preserve filenames and links in .agents/skills/arc/ for Codex, or this agent's documented project-local skill directory. Compare before replacing existing files. Read the skill and relevant references.\n2. Inspect React/framework compatibility and existing shadcn configuration. Select free components from https://uiarc.dev/llms.txt; read each component's /markdown page. Use Pro only with access.\n3. With shadcn configured, install foundation once: npx shadcn@latest add https://uiarc.dev/r/arc-foundation.json. Install the selected component registry URLs with the project's package runner. Import components/arc/foundation.css once; load Geist and Inter as --font-geist and --font-inter. Preserve the project's component alias.\n4. Verify local skill references exist, run the Arc checklist and project build/typecheck, and inspect keyboard controls, mobile layout and reduced motion.\n\nRead this project's instructions first. Preserve existing work and use its package manager. If a required source is inaccessible or incompatible, report the exact blocker; do not invent instructions or claim success. Record source URLs, resolved revision/version, date, changed files and checks in docs/references/arc-ui.md. Integrate only the feature I requested; otherwise stop after setup. Report what is ready and what remains unverified.",
+    "handoffChecked": "2026-11-07",
+    "handoffValidation": "Components tested in Collection; skill bundle download tested"
   },
   {
     "id": "react-three-fiber",
@@ -59,7 +65,9 @@
     "reviewAfter": "2027-02-05",
     "status": "Linked",
     "attribution": "pmndrs",
-    "prompt": "Use https://github.com/pmndrs/react-three-fiber to build a 3D scene in this project. Read the current documentation and check compatibility with the installed React version before integrating it. This is a library, not an agent skill."
+    "prompt": "Prepare React Three Fiber for this project. This is a library, not an agent skill.\n\nSource: https://github.com/pmndrs/react-three-fiber\nSetup: https://r3f.docs.pmnd.rs/getting-started/installation\n1. Read the guide and inspect React/ReactDOM versions. The checked guide pairs Fiber 8 with React 18 and Fiber 9 with React 19. Confirm current peer dependencies before selecting versions; do not implicitly upgrade the host framework.\n2. Install compatible three and @react-three/fiber using the project's package manager. Include @types/three for TypeScript when required. Retain the lockfile. Keep browser rendering on the client in SSR projects.\n3. For the requested scene, use Canvas from @react-three/fiber in a container with explicit dimensions, following the official first-scene example. Provide a usable fallback when WebGL is unavailable.\n4. Verify dependency resolution and build. In a browser, check rendering, resizing and interactions without console errors; respect reduced motion. Save setup and example links locally.\n\nRead this project's instructions first. Preserve existing work and use its package manager. If a required source is inaccessible or incompatible, report the exact blocker; do not invent instructions or claim success. Record source URLs, resolved revision/version, date, changed files and checks in docs/references/react-three-fiber.md. Integrate only the feature I requested; otherwise stop after setup. Report what is ready and what remains unverified.",
+    "handoffChecked": "2026-11-07",
+    "handoffValidation": "Installation docs checked; target-project install not tested"
   },
   {
     "id": "liquid-glass-js",
@@ -75,7 +83,9 @@
     "reviewAfter": "2027-02-05",
     "status": "Linked",
     "attribution": "dashersw",
-    "prompt": "Explore https://github.com/dashersw/liquid-glass-js and its live demo for a glass effect in this project. Read its current integration instructions, check browser support, and preserve text legibility. This is a library, not an agent skill."
+    "prompt": "Prepare Liquid Glass JS for this project. This upstream project distributes browser source files, not a documented npm package or agent skill.\n\nSource and setup: https://github.com/dashersw/liquid-glass-js\n1. Read README.md and inspect index.html, container.js, button.js, styles.css and glass.css at one resolved commit. Vendor required files and LICENSE in an isolated directory with attribution. Do not install a similarly named npm package.\n2. The upstream quick start loads styles.css and glass.css, then html2canvas 1.4.1, container.js and button.js in that order. Inspect global CSS and script assumptions; scope them or isolate the example so they do not reset the project UI.\n3. Run an HTTP-served example before adapting it to the framework. Derive lifecycle cleanup from actual source; do not assume destroy/dispose APIs exist.\n4. Verify glass rendering, click and keyboard behavior, resize, text contrast and WebGL/page-capture failures. Keep an ordinary usable surface when effects fail. Record adaptations and run project checks.\n\nRead this project's instructions first. Preserve existing work and use its package manager. If a required source is inaccessible or incompatible, report the exact blocker; do not invent instructions or claim success. Record source URLs, resolved revision/version, date, changed files and checks in docs/references/liquid-glass-js.md. Integrate only the feature I requested; otherwise stop after setup. Report what is ready and what remains unverified.",
+    "handoffChecked": "2026-11-07",
+    "handoffValidation": "Source-file integration docs checked; runtime not tested"
   },
   {
     "id": "shadergradient",
@@ -91,7 +101,9 @@
     "reviewAfter": "2027-02-05",
     "status": "Linked",
     "attribution": "ruucm",
-    "prompt": "Use https://github.com/ruucm/shadergradient to add a shader background to this project. Read current installation and peer-dependency requirements first. Keep foreground content readable and support reduced motion. This is a library, not an agent skill."
+    "prompt": "Prepare Shader Gradient for this project. This is a rendering library, not an agent skill.\n\nSource and setup: https://github.com/ruucm/shadergradient\n1. Read the current README and package peer dependencies. Match Fiber to React; the checked guide uses Fiber 8 for React 18 and Fiber 9 for React 19. Do not silently migrate the framework.\n2. For React, install compatible @shadergradient/react, @react-three/fiber, three, three-stdlib and camera-controls using the project's package manager; add @types/three for TypeScript. Retain the lockfile. For Vue/Nuxt, follow packages/shadergradient-vue/README.md instead.\n3. Render ShaderGradient inside ShaderGradientCanvas with explicit container dimensions and documented props in the requested feature. Use client rendering where required. Do not import old bundled controls/store; the current renderer is separate.\n4. Build and inspect resizing, readable foreground and console errors. Supply a static/fallback treatment for reduced motion or unavailable WebGL. Record selected versions and any preset URL locally.\n\nRead this project's instructions first. Preserve existing work and use its package manager. If a required source is inaccessible or incompatible, report the exact blocker; do not invent instructions or claim success. Record source URLs, resolved revision/version, date, changed files and checks in docs/references/shadergradient.md. Integrate only the feature I requested; otherwise stop after setup. Report what is ready and what remains unverified.",
+    "handoffChecked": "2026-11-07",
+    "handoffValidation": "Installation docs checked; target-project install not tested"
   },
   {
     "id": "liquid-logo",
@@ -107,6 +119,8 @@
     "reviewAfter": "2027-02-05",
     "status": "Linked",
     "attribution": "collidingScopes",
-    "prompt": "Use https://collidingscopes.github.io/liquid-logo/ to explore a liquid-metal animation for my logo. Source: https://github.com/collidingScopes/liquid-logo. Check available image/video export options. This is an external creative tool, not an installable agent skill."
+    "prompt": "Bring a Liquid Logo reference or exported asset into this project. This is a creative tool, not an installable agent skill.\n\nTool: https://collidingscopes.github.io/liquid-logo/\nSource: https://github.com/collidingScopes/liquid-logo (README.MD)\n1. Read the usage guide. Find the intended logo among project or supplied assets; ask for it only if missing. Preserve the original.\n2. Use the browser tool to tune the logo and export PNG or MP4. Without browser tooling, save the source and usage instructions locally and report export as pending. A reference link is not an installed animation.\n3. For local authoring, clone the repository into a separate tools directory, retain LICENSE.txt, and serve over HTTP (for example python -m http.server). Do not copy the authoring app into the product unless requested.\n4. Put requested exports in the project's asset directory. Verify files open/play, dimensions and transparency match the export, and product usage has alternative text and a static reduced-motion fallback. Record the source and settings.\n\nRead this project's instructions first. Preserve existing work and use its package manager. If a required source is inaccessible or incompatible, report the exact blocker; do not invent instructions or claim success. Record source URLs, resolved revision/version, date, changed files and checks in docs/references/liquid-logo.md. Integrate only the feature I requested; otherwise stop after setup. Report what is ready and what remains unverified.",
+    "handoffChecked": "2026-11-07",
+    "handoffValidation": "PNG/MP4 workflow documented upstream; export not tested"
   }
 ]

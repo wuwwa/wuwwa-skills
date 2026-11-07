@@ -109,7 +109,7 @@ h1 {
 }
 .item {
   display: grid;
-  grid-template-columns: 32px minmax(0, 1fr) 96px 164px;
+  grid-template-columns: 32px minmax(0, 1fr) 96px 252px;
   gap: 16px;
   align-items: center;
   padding: 12px 0;
@@ -253,7 +253,7 @@ footer {
     padding-inline: 24px;
   }
   .item {
-    grid-template-columns: 24px minmax(0, 1fr) 152px;
+    grid-template-columns: 24px minmax(0, 1fr) 240px;
     gap: 12px;
   }
   .item-category {
