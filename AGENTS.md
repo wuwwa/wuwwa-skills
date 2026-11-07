@@ -14,3 +14,4 @@
 - Each entry's prepared bundle is defined by `bundles/<id>/bundle.json`; package canonical source files rather than duplicating them. `npm run bundles` builds downloadable ZIPs locally with source records and file hashes. Keep known working versions and observed incompatibilities in the bundle.
 - Saved repositories use kind `Repo`, short notes and source links. Do not imply a repo is an installable skill, automatically star it, or enable monitoring just because it was saved.
 - Favorites are user-controlled Collection stars, stored in browser local storage, not GitHub stars. Keep platform tags explicit; use `Reference` for inspiration, workflows and saved posts that are not installable skills. Preserve grouped source links and attached material in their bundles.
+- Give each entry a concrete `useWhen` cue and `youGet` summary. Keep technical notes inside the detail modal.

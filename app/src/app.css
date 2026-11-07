@@ -177,6 +177,19 @@ footer {
 .details textarea {
   overflow-wrap: anywhere;
 }
+.quick-guide {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr);
+  gap: 8px 16px;
+  margin: 0;
+}
+.quick-guide dt {
+  color: var(--text-secondary);
+}
+.quick-guide dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
 .detail-actions {
   display: flex;
   align-items: center;

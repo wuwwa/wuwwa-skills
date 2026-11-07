@@ -26,7 +26,7 @@ Skills, tools and saved repos. Run `npm install` then `npm run dev`.
 | [Clear Technical Explanations](https://x.com/karpathy/status/2105819303471976479) | Writing | Reference | 2026-11-07 |
 | [Land or Water Eval](bundles/land-or-water-eval/guide.md) | Research | Reference | 2026-11-07 |
 
-Star entries in the UI to save favorites in this browser. Filter by type, category or platform.
+Star entries in the UI to save favorites in this browser. Search by task or filter by type, category or platform.
 
 Tell your agent: `Add the ui-motion bundle from wuwwa/wuwwa-skills to this project. Read bundles/ui-motion/bundle.json.`
 

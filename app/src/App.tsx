@@ -16,6 +16,8 @@ type Item = {
   kind: string;
   category: string;
   description: string;
+  useWhen: string;
+  youGet: string;
   source: string;
   demo?: string | null;
   added: string;
@@ -131,17 +133,12 @@ function Details({ item, mode }: { item: Item; mode: string }) {
   const HandoffContainer = reference ? "details" : "div";
   return (
     <div className="details">
-      {item.notes && (
-        <ul className="repo-notes">
-          {item.notes.map((note) => (
-            <li key={note}>{note}</li>
-          ))}
-        </ul>
-      )}
-      <p className="muted">
-        {item.bundleSummary}. Download the files or copy the handoff for your
-        agent.
-      </p>
+      <dl className="quick-guide">
+        <dt>Use when</dt>
+        <dd>{item.useWhen}</dd>
+        <dt>You get</dt>
+        <dd>{item.youGet}</dd>
+      </dl>
       {mode === "preview" &&
         (item.demo === "design" ? <DesignDemo /> : <MotionDemo />)}
       <HandoffContainer className="repo-handoff">
@@ -201,6 +198,16 @@ function Details({ item, mode }: { item: Item; mode: string }) {
           Open creator’s demo
           <ArrowUpRight size={16} aria-hidden="true" />
         </a>
+      )}
+      {item.notes && (
+        <details className="source-details">
+          <summary>Notes</summary>
+          <ul className="repo-notes">
+            {item.notes.map((note) => (
+              <li key={note}>{note}</li>
+            ))}
+          </ul>
+        </details>
       )}
       <details className="source-details">
         <summary>Source & dates</summary>
@@ -312,7 +319,7 @@ export default function App() {
         item.platforms.includes("Any") ||
         item.platforms.includes(platform)) &&
       (!starredOnly || favorites.includes(item.id)) &&
-      `${item.name} ${item.description} ${item.category} ${item.kind} ${item.attribution || ""}`
+      `${item.name} ${item.description} ${item.useWhen} ${item.youGet} ${item.category} ${item.kind} ${item.attribution || ""}`
         .toLowerCase()
         .includes(query.trim().toLowerCase()),
   );
@@ -370,7 +377,7 @@ export default function App() {
           <div className="toolbar">
             <SearchField
               label="Search"
-              placeholder="Find something in your collection"
+              placeholder="What do you want to do?"
               value={query}
               onValueChange={setQuery}
             />
@@ -453,7 +460,7 @@ export default function App() {
                   </Button>
                   <div className="item-name">
                     <h2>{item.name}</h2>
-                    <p>{item.description}</p>
+                    <p>{item.useWhen}</p>
                   </div>
                   <span className="item-category">{item.category}</span>
                   <div className="item-actions">
