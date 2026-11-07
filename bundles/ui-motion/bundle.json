@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "ui-motion",
+  "checked": "2026-11-07",
+  "reviewAfter": "2027-02-05",
+  "sources": [
+    "https://github.com/wuwwa/wuwwa-skills/tree/main/skills/ui-motion"
+  ],
+  "files": [
+    {
+      "source": "skills/ui-motion",
+      "destination": ".agents/skills/ui-motion"
+    },
+    {
+      "source": "bundles/ui-motion/guide.md",
+      "destination": "docs/references/ui-motion.md"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "id": "react-three-fiber",
+  "checked": "2026-11-07",
+  "reviewAfter": "2027-02-05",
+  "sources": ["https://github.com/pmndrs/react-three-fiber"],
+  "files": [
+    {
+      "source": "bundles/react-three-fiber/guide.md",
+      "destination": "docs/references/react-three-fiber.md"
+    },
+    {
+      "source": "bundles/react-three-fiber/Scene.tsx",
+      "destination": "examples/react-three-fiber/Scene.tsx"
+    },
+    {
+      "source": "bundles/react-three-fiber/tested-versions.json",
+      "destination": "docs/references/react-three-fiber-versions.json"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "ui-design-polish",
+  "checked": "2026-11-07",
+  "reviewAfter": "2027-02-05",
+  "sources": [
+    "https://github.com/wuwwa/wuwwa-skills/tree/main/skills/ui-design-polish"
+  ],
+  "files": [
+    {
+      "source": "skills/ui-design-polish",
+      "destination": ".agents/skills/ui-design-polish"
+    },
+    {
+      "source": "bundles/ui-design-polish/guide.md",
+      "destination": "docs/references/ui-design-polish.md"
+    }
+  ]
+}

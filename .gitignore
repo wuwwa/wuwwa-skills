@@ -2,3 +2,4 @@ output/
 .playwright-cli/
 node_modules/
 dist/
+app/public/bundles/

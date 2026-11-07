@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "arc-ui",
+  "checked": "2026-11-07",
+  "reviewAfter": "2027-02-05",
+  "sources": [
+    "https://uiarc.dev/r/skills/arc/SKILL.md",
+    "https://uiarc.dev/docs/installation"
+  ],
+  "files": [
+    {
+      "source": "skills/arc-ui",
+      "destination": ".agents/skills/arc-ui"
+    },
+    {
+      "source": "bundles/arc-ui/guide.md",
+      "destination": "docs/references/arc-ui.md"
+    }
+  ]
+}

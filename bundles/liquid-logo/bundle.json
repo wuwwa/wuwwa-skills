@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "liquid-logo",
+  "checked": "2026-11-07",
+  "reviewAfter": "2027-02-05",
+  "sources": ["https://github.com/collidingScopes/liquid-logo"],
+  "files": [
+    {
+      "source": "bundles/liquid-logo/guide.md",
+      "destination": "docs/references/liquid-logo.md"
+    }
+  ]
+}

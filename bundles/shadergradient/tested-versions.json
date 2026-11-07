@@ -1,0 +1,15 @@
+{
+  "checked": "2026-11-07",
+  "environment": "Isolated React/Vite browser example",
+  "dependencies": {
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "@react-three/fiber": "9.8.2",
+    "@shadergradient/react": "2.4.20",
+    "three": "0.170.0",
+    "three-stdlib": "2.36.1",
+    "camera-controls": "3.1.2"
+  },
+  "devDependencies": { "@types/three": "0.170.0" },
+  "knownFailure": "With Three.js 0.187.0, the renderer reported missing cube_uv_reflection_fragment."
+}

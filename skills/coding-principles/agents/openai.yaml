@@ -1,0 +1,4 @@
+interface:
+  display_name: "Coding Principles"
+  short_description: "Simple code, explicit errors, and clear naming"
+  default_prompt: "Use $coding-principles to guide this implementation."

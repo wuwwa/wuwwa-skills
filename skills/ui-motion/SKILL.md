@@ -36,6 +36,8 @@ These are starting points to tune, not effects to add everywhere.
 
 Respect reduced-motion preferences. Check keyboard focus, rapid reversals, text clarity, and input responsiveness.
 
+For implementation, read the bundled [motion notes](references/implementation.md). Fetch the original manuals only when a specific API or version needs checking.
+
 Source: supplied Charles Liu screenshot, `IMG_2596.PNG`. Original publication date unknown. Accessibility and input checks are added guidance.
 
 References: [Motion layout](https://motion.dev/docs/react-layout-animations), [reduced motion](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@media/prefers-reduced-motion). Checked 2026-11-07.

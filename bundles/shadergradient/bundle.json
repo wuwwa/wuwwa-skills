@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "id": "shadergradient",
+  "checked": "2026-11-07",
+  "reviewAfter": "2027-02-05",
+  "sources": ["https://github.com/ruucm/shadergradient"],
+  "files": [
+    {
+      "source": "bundles/shadergradient/guide.md",
+      "destination": "docs/references/shadergradient.md"
+    },
+    {
+      "source": "bundles/shadergradient/Gradient.tsx",
+      "destination": "examples/shadergradient/Gradient.tsx"
+    },
+    {
+      "source": "bundles/shadergradient/tested-versions.json",
+      "destination": "docs/references/shadergradient-versions.json"
+    }
+  ]
+}

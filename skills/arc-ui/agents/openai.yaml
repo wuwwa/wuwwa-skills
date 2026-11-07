@@ -1,0 +1,4 @@
+interface:
+  display_name: "Arc UI"
+  short_description: "Build React interfaces with Arc components"
+  default_prompt: "Use $arc-ui to build this interface with Arc components."

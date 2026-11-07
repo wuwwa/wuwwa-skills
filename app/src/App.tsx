@@ -3,6 +3,8 @@ import {
   ArrowUpRight,
   Box,
   Circle,
+  Code2,
+  Camera,
   Layers,
   Library,
   Moon,
@@ -21,7 +23,29 @@ import { EmptyState } from "./components/arc/empty-state/empty-state";
 import { Textarea } from "./components/arc/textarea/textarea";
 import catalog from "../../catalog.json";
 
-type Item = (typeof catalog)[number];
+type Item = {
+  id: string;
+  name: string;
+  kind: string;
+  category: string;
+  description: string;
+  source: string;
+  demo?: string | null;
+  added: string;
+  checked?: string;
+  updated?: string;
+  reviewAfter: string;
+  status: string;
+  attribution?: string;
+  prompt: string;
+  handoffChecked: string;
+  handoffValidation: string;
+  bundlePath: string;
+  bundleSummary: string;
+  notes?: string[];
+  revision?: string;
+};
+const items: Item[] = catalog;
 const categories = [
   "All",
   "Design",
@@ -30,12 +54,15 @@ const categories = [
   "3D",
   "Effects",
   "Branding",
+  "Engineering",
+  "Computer vision",
 ];
 const types = [
   { value: "All", label: "All" },
   { value: "Skill", label: "Skills" },
   { value: "Library", label: "Libraries" },
   { value: "Tool", label: "Tools" },
+  { value: "Repo", label: "Repos" },
 ];
 const symbols = {
   Design: Type,
@@ -44,6 +71,8 @@ const symbols = {
   "3D": Box,
   Effects: Waves,
   Branding: Sparkles,
+  Engineering: Code2,
+  "Computer vision": Camera,
 };
 const formatDate = (date: string) =>
   new Intl.DateTimeFormat("en-US", {
@@ -52,7 +81,7 @@ const formatDate = (date: string) =>
     year: "numeric",
     timeZone: "UTC",
   }).format(new Date(date + "T00:00:00Z"));
-const isLocal = (item: Item) => ["design", "motion"].includes(item.demo);
+const isLocal = (item: Item) => ["design", "motion"].includes(item.demo || "");
 
 function DesignDemo() {
   const [view, setView] = useState("after");
@@ -128,39 +157,70 @@ function Details({ item, mode }: { item: Item; mode: string }) {
       prompt.current?.select();
     }
   };
+  const HandoffContainer = item.kind === "Repo" ? "details" : "div";
   return (
     <div className="details">
+      {item.notes && (
+        <ul className="repo-notes">
+          {item.notes.map((note) => (
+            <li key={note}>{note}</li>
+          ))}
+        </ul>
+      )}
       <p className="muted">
-        Copy this handoff into your project’s agent. Nothing is installed by
-        this page.
+        {item.bundleSummary}. Download the files or copy the handoff for your
+        agent.
       </p>
       {mode === "preview" &&
         (item.demo === "design" ? <DesignDemo /> : <MotionDemo />)}
-      <Textarea
-        label="Project handoff"
-        id="agent-prompt"
-        ref={prompt}
-        value={item.prompt}
-        readOnly
-        rows={6}
-      />
-      <div className="detail-actions">
-        <Button variant="primary" onClick={copy}>
-          {copied ? "Handoff copied" : "Copy handoff"}
-        </Button>
-        <a href={item.source} target="_blank" rel="noreferrer">
-          {item.kind === "Skill" ? "Read skill" : "View source"}
-          <ArrowUpRight size={16} aria-hidden="true" />
-        </a>
-      </div>
-      <p className="copy-status" role="status">
-        {copyError
-          ? "Copy is unavailable. The prompt is selected for you to copy manually."
-          : copied
-            ? "Ready to paste into your agent."
-            : ""}
-      </p>
-      {!isLocal(item) && (
+      <HandoffContainer className="repo-handoff">
+        {item.kind === "Repo" && <summary>Copy a project reference</summary>}
+        <Textarea
+          label="Project handoff"
+          id="agent-prompt"
+          ref={prompt}
+          value={item.prompt}
+          readOnly
+          rows={6}
+        />
+        <div className="detail-actions">
+          <Button variant="primary" onClick={copy}>
+            {copied ? "Handoff copied" : "Copy handoff"}
+          </Button>
+          <a
+            href={`${import.meta.env.BASE_URL}bundles/${item.id}.zip`}
+            download
+          >
+            Download bundle
+          </a>
+          <a href={item.source} target="_blank" rel="noreferrer">
+            {item.kind === "Repo" ? "Open repo" : "View source"}
+            <ArrowUpRight size={16} aria-hidden="true" />
+          </a>
+        </div>
+        <p className="copy-status" role="status">
+          {copyError
+            ? "Copy is unavailable. The prompt is selected for you to copy manually."
+            : copied
+              ? "Ready to paste into your agent."
+              : ""}
+        </p>
+      </HandoffContainer>
+      {item.kind === "Repo" && (
+        <div className="detail-actions">
+          <a href={item.source} target="_blank" rel="noreferrer">
+            Open repo
+            <ArrowUpRight size={16} aria-hidden="true" />
+          </a>
+          <a
+            href={`${import.meta.env.BASE_URL}bundles/${item.id}.zip`}
+            download
+          >
+            Download notes
+          </a>
+        </div>
+      )}
+      {item.demo && !isLocal(item) && (
         <a
           className="demo-link"
           href={item.demo}
@@ -171,24 +231,33 @@ function Details({ item, mode }: { item: Item; mode: string }) {
           <ArrowUpRight size={16} aria-hidden="true" />
         </a>
       )}
-      <dl className="dates">
-        <dt>Handoff checked</dt>
-        <dd>{formatDate(item.handoffChecked)}</dd>
-        <dt>Added</dt>
-        <dd>{formatDate(item.added)}</dd>
-        <dt>{item.checked ? "Links checked" : "Updated"}</dt>
-        <dd>{formatDate(item.checked || item.updated!)}</dd>
-        <dt>Review after</dt>
-        <dd>{formatDate(item.reviewAfter)}</dd>
-        <dt>Status</dt>
-        <dd>{today > item.reviewAfter ? "Needs review" : item.status}</dd>
-        {item.attribution && (
-          <>
-            <dt>Creator</dt>
-            <dd>{item.attribution}</dd>
-          </>
-        )}
-      </dl>
+      <details className="source-details">
+        <summary>Source & dates</summary>
+        <dl className="dates">
+          <dt>Handoff checked</dt>
+          <dd>{formatDate(item.handoffChecked)}</dd>
+          <dt>Added</dt>
+          <dd>{formatDate(item.added)}</dd>
+          <dt>{item.checked ? "Links checked" : "Updated"}</dt>
+          <dd>{formatDate(item.checked || item.updated || item.added)}</dd>
+          <dt>Review after</dt>
+          <dd>{formatDate(item.reviewAfter)}</dd>
+          <dt>Status</dt>
+          <dd>{today > item.reviewAfter ? "Needs review" : item.status}</dd>
+          {item.attribution && (
+            <>
+              <dt>Creator</dt>
+              <dd>{item.attribution}</dd>
+            </>
+          )}
+          {item.revision && (
+            <>
+              <dt>Revision</dt>
+              <dd className="revision">{item.revision.slice(0, 12)}</dd>
+            </>
+          )}
+        </dl>
+      </details>
       <p className="muted">{item.handoffValidation}.</p>
     </div>
   );
@@ -240,7 +309,7 @@ export default function App() {
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
   }, [theme]);
-  const shown = catalog.filter(
+  const shown = items.filter(
     (item) =>
       (category === "All" || item.category === category) &&
       (kind === "All" || item.kind === kind) &&
@@ -294,7 +363,7 @@ export default function App() {
         </header>
         <main id="collection">
           <div className="heading">
-            <h1>Skills & tools</h1>
+            <h1>Skills, tools & repos</h1>
             <span className="count" role="status">
               {shown.length} {shown.length === 1 ? "item" : "items"}
             </span>
@@ -302,7 +371,7 @@ export default function App() {
           <div className="toolbar">
             <SearchField
               label="Search"
-              placeholder="Find a skill or tool"
+              placeholder="Find something in your collection"
               value={query}
               onValueChange={setQuery}
             />
@@ -349,7 +418,7 @@ export default function App() {
                       >
                         Preview
                       </Button>
-                    ) : (
+                    ) : item.demo ? (
                       <a
                         href={item.demo}
                         target="_blank"
@@ -359,13 +428,27 @@ export default function App() {
                         Demo
                         <ArrowUpRight size={14} aria-hidden="true" />
                       </a>
-                    )}
+                    ) : item.kind === "Repo" ? (
+                      <a
+                        href={item.source}
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-label={`Open ${item.name} repository`}
+                      >
+                        Open repo
+                        <ArrowUpRight size={14} aria-hidden="true" />
+                      </a>
+                    ) : null}
                     <Button
                       variant="secondary"
                       onClick={() => show(item, "use")}
-                      aria-label={`Add ${item.name} to project`}
+                      aria-label={
+                        item.kind === "Repo"
+                          ? `View ${item.name} notes`
+                          : `Add ${item.name} to project`
+                      }
                     >
-                      Add to project
+                      {item.kind === "Repo" ? "View notes" : "Add to project"}
                     </Button>
                   </div>
                 </article>
@@ -393,7 +476,7 @@ export default function App() {
           </div>
         </main>
         <footer>
-          <span>Pick a skill. Try it. Make something.</span>
+          <span>Keep what’s useful.</span>
         </footer>
       </div>
       <Dialog open={open} onOpenChange={setOpen}>

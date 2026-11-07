@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "lot-vulture",
+  "checked": "2026-11-07",
+  "reviewAfter": "2027-02-05",
+  "sources": ["https://github.com/lotvulture/lotvulture"],
+  "files": [
+    {
+      "source": "bundles/lot-vulture/guide.md",
+      "destination": "docs/references/lot-vulture.md"
+    }
+  ]
+}
