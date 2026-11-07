@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "lettra",
+  "checked": "2026-11-07",
+  "reviewAfter": "2027-02-05",
+  "sources": [
+    "https://github.com/joyco-studio/lettra"
+  ],
+  "files": [
+    {
+      "source": "bundles/lettra/guide.md",
+      "destination": "docs/references/lettra.md"
+    }
+  ]
+}

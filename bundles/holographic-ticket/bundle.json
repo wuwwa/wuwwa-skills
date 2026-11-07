@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "holographic-ticket",
+  "checked": "2026-11-07",
+  "reviewAfter": "2027-02-05",
+  "sources": [
+    "https://x.com/shirotatakajo/status/2116165057222762647"
+  ],
+  "files": [
+    {
+      "source": "bundles/holographic-ticket/guide.md",
+      "destination": "docs/references/holographic-ticket.md"
+    }
+  ]
+}

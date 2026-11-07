@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "wind-map-motion",
+  "checked": "2026-11-07",
+  "reviewAfter": "2027-02-05",
+  "sources": [
+    "https://x.com/willthomson__/status/2117673434066923965"
+  ],
+  "files": [
+    {
+      "source": "bundles/wind-map-motion/guide.md",
+      "destination": "docs/references/wind-map-motion.md"
+    }
+  ]
+}

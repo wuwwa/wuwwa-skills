@@ -16,7 +16,8 @@
     "handoffChecked": "2026-11-07",
     "handoffValidation": "Skill download tested; application depends on target project",
     "bundlePath": "bundles/ui-design-polish",
-    "bundleSummary": "Skill and local reference notes"
+    "bundleSummary": "Skill and local reference notes",
+    "platforms": ["Web"]
   },
   {
     "id": "ui-motion",
@@ -35,7 +36,8 @@
     "handoffChecked": "2026-11-07",
     "handoffValidation": "Complete skill and implementation reference packaged; target interaction needs review",
     "bundlePath": "bundles/ui-motion",
-    "bundleSummary": "Skill and local reference notes"
+    "bundleSummary": "Skill and local reference notes",
+    "platforms": ["Web"]
   },
   {
     "id": "arc-ui",
@@ -55,7 +57,8 @@
     "handoffChecked": "2026-11-07",
     "handoffValidation": "Local adapter and Arc components checked in Collection; target setup still needs validation",
     "bundlePath": "bundles/arc-ui",
-    "bundleSummary": "Skill and local reference notes"
+    "bundleSummary": "Skill and local reference notes",
+    "platforms": ["Web"]
   },
   {
     "id": "react-three-fiber",
@@ -75,7 +78,8 @@
     "handoffChecked": "2026-11-07",
     "handoffValidation": "Included scene typechecked, built and rendered with recorded versions; target integration untested",
     "bundlePath": "bundles/react-three-fiber",
-    "bundleSummary": "Integration guide and React example"
+    "bundleSummary": "Integration guide and React example",
+    "platforms": ["Web"]
   },
   {
     "id": "liquid-glass-js",
@@ -95,7 +99,8 @@
     "handoffChecked": "2026-11-07",
     "handoffValidation": "Source-file integration docs checked; runtime not tested",
     "bundlePath": "bundles/liquid-glass-js",
-    "bundleSummary": "Integration and workflow notes"
+    "bundleSummary": "Integration and workflow notes",
+    "platforms": ["Web"]
   },
   {
     "id": "shadergradient",
@@ -115,7 +120,8 @@
     "handoffChecked": "2026-11-07",
     "handoffValidation": "Included example typechecked, built and rendered with recorded versions; incompatible Three.js version noted",
     "bundlePath": "bundles/shadergradient",
-    "bundleSummary": "Integration guide and React example"
+    "bundleSummary": "Integration guide and React example",
+    "platforms": ["Web"]
   },
   {
     "id": "liquid-logo",
@@ -135,7 +141,8 @@
     "handoffChecked": "2026-11-07",
     "handoffValidation": "PNG/MP4 workflow documented upstream; export not tested",
     "bundlePath": "bundles/liquid-logo",
-    "bundleSummary": "Integration and workflow notes"
+    "bundleSummary": "Integration and workflow notes",
+    "platforms": ["Web"]
   },
   {
     "id": "coding-principles",
@@ -154,7 +161,8 @@
     "handoffValidation": "Skill metadata validated; screenshot adapted, original post unverified",
     "bundlePath": "bundles/coding-principles",
     "bundleSummary": "Skill and local reference notes",
-    "prompt": "Add Coding Principles to this project using the prepared Collection bundle.\n\nBundle source: https://github.com/wuwwa/wuwwa-skills/tree/main/bundles/coding-principles\n1. Read this project's instructions. Fetch the bundle directory and read bundle.json. Its files mappings identify the prepared local skill, guide and/or example paths in the same repo. Fetch all mapped files at one resolved Git revision; preserve directory structure. If I supplied the ZIP, read bundle-manifest.json and extract to a temporary directory instead.\n2. Read docs/references/coding-principles.md from the bundle. Compare before merging files into this project. For skills, the default Codex destination is .agents/skills/; adapt to another agent's documented project-local directory. Explicitly read the installed SKILL.md for this task.\n3. Follow the bundled setup and verification notes. Install runtime packages only where the guide requires them, using this project’s package manager. Apply only the requested feature; otherwise stop after preparation.\n4. Record source URLs, resolved revision/versions, date and completed checks in docs/references/coding-principles.md. Check upstream only for changed compatibility, stale guidance, or an API missing from the local notes. If a source is inaccessible, report the blocker instead of guessing. Report what was installed/saved and what remains unverified."
+    "prompt": "Add Coding Principles to this project using the prepared Collection bundle.\n\nBundle source: https://github.com/wuwwa/wuwwa-skills/tree/main/bundles/coding-principles\n1. Read this project's instructions. Fetch the bundle directory and read bundle.json. Its files mappings identify the prepared local skill, guide and/or example paths in the same repo. Fetch all mapped files at one resolved Git revision; preserve directory structure. If I supplied the ZIP, read bundle-manifest.json and extract to a temporary directory instead.\n2. Read docs/references/coding-principles.md from the bundle. Compare before merging files into this project. For skills, the default Codex destination is .agents/skills/; adapt to another agent's documented project-local directory. Explicitly read the installed SKILL.md for this task.\n3. Follow the bundled setup and verification notes. Install runtime packages only where the guide requires them, using this project’s package manager. Apply only the requested feature; otherwise stop after preparation.\n4. Record source URLs, resolved revision/versions, date and completed checks in docs/references/coding-principles.md. Check upstream only for changed compatibility, stale guidance, or an API missing from the local notes. If a source is inaccessible, report the blocker instead of guessing. Report what was installed/saved and what remains unverified.",
+    "platforms": ["Any"]
   },
   {
     "id": "lot-vulture",
@@ -179,6 +187,254 @@
     "revision": "33440cd1b445623850b4300362ac825adf1aa533",
     "bundlePath": "bundles/lot-vulture",
     "bundleSummary": "Saved repo brief",
-    "prompt": "Save the Lot Vulture repo reference to this project using the prepared Collection bundle.\n\nBundle source: https://github.com/wuwwa/wuwwa-skills/tree/main/bundles/lot-vulture\n1. Read this project's instructions. Fetch the bundle directory and read bundle.json. Its files mappings identify the prepared local skill, guide and/or example paths in the same repo. Fetch all mapped files at one resolved Git revision; preserve directory structure. If I supplied the ZIP, read bundle-manifest.json and extract to a temporary directory instead.\n2. Read docs/references/lot-vulture.md from the bundle. Compare before merging files into this project. For skills, the default Codex destination is .agents/skills/; adapt to another agent's documented project-local directory. Explicitly read the installed SKILL.md for this task.\n3. Save the brief as a reference only. Do not install, run or connect cameras unless I request evaluation.\n4. Record source URLs, resolved revision/versions, date and completed checks in docs/references/lot-vulture.md. Check upstream only for changed compatibility, stale guidance, or an API missing from the local notes. If a source is inaccessible, report the blocker instead of guessing. Report what was installed/saved and what remains unverified."
+    "prompt": "Save the Lot Vulture repo reference to this project using the prepared Collection bundle.\n\nBundle source: https://github.com/wuwwa/wuwwa-skills/tree/main/bundles/lot-vulture\n1. Read this project's instructions. Fetch the bundle directory and read bundle.json. Its files mappings identify the prepared local skill, guide and/or example paths in the same repo. Fetch all mapped files at one resolved Git revision; preserve directory structure. If I supplied the ZIP, read bundle-manifest.json and extract to a temporary directory instead.\n2. Read docs/references/lot-vulture.md from the bundle. Compare before merging files into this project. For skills, the default Codex destination is .agents/skills/; adapt to another agent's documented project-local directory. Explicitly read the installed SKILL.md for this task.\n3. Save the brief as a reference only. Do not install, run or connect cameras unless I request evaluation.\n4. Record source URLs, resolved revision/versions, date and completed checks in docs/references/lot-vulture.md. Check upstream only for changed compatibility, stale guidance, or an API missing from the local notes. If a source is inaccessible, report the blocker instead of guessing. Report what was installed/saved and what remains unverified.",
+    "platforms": ["Windows", "Linux"]
+  },
+  {
+    "id": "lettra",
+    "name": "Lettra",
+    "kind": "Library",
+    "category": "Typography",
+    "description": "Sharp, animated text for Three.js WebGPU scenes.",
+    "source": "https://github.com/joyco-studio/lettra",
+    "demo": "https://lettra.dev",
+    "platforms": ["Web"],
+    "attribution": "JOYCO Studio",
+    "revision": "65c91fc7c29482aac79c23d4b6db82c800af7a16",
+    "handoffValidation": "Source and integration requirements checked; font baking and rendering not tested",
+    "added": "2026-11-07",
+    "checked": "2026-11-07",
+    "reviewAfter": "2027-02-05",
+    "status": "Linked",
+    "handoffChecked": "2026-11-07",
+    "bundlePath": "bundles/lettra",
+    "bundleSummary": "Integration and setup notes",
+    "prompt": "Add Lettra in this project using its prepared Collection bundle.\n\nBundle source: https://github.com/wuwwa/wuwwa-skills/tree/main/bundles/lettra\n1. Read this project's instructions. Fetch bundle.json and the files it maps at one resolved repo revision, or read bundle-manifest.json from the supplied ZIP after extracting into a temporary directory.\n2. Read docs/references/lettra.md. Compare before merging files. Skills use .agents/skills/ in Codex; adapt only to another host's documented project-local skill path. Read the installed SKILL.md explicitly for this task.\n3. Follow the bundled requirements and checks. Install runtime dependencies only for the requested implementation. Installing a skill alone does not authorize running its workflow.\n4. Record source URLs, resolved revision/versions, date and completed checks locally. Check upstream for changed compatibility or missing API details, and report inaccessible sources or unverified behavior instead of guessing."
+  },
+  {
+    "id": "security-audit",
+    "name": "Cloudflare Security Audit",
+    "kind": "Skill",
+    "category": "Security",
+    "description": "Audit code with independently verified findings.",
+    "source": "https://github.com/cloudflare/security-audit-skill",
+    "platforms": ["macOS", "Linux"],
+    "attribution": "Cloudflare",
+    "revision": "c1c8a8c1471069fb0e188eeaff69b8e8db6564a8",
+    "handoffValidation": "Complete upstream bundle checked; validator CLI refused this Windows host, so the workflow is not validated here",
+    "notes": [
+      "Requires a capable agent, independent subagents and Node.js.",
+      "Full audits need the execution controls described in the skill.",
+      "Validator CLI needs OS file protections unavailable on this Windows host."
+    ],
+    "added": "2026-11-07",
+    "checked": "2026-11-07",
+    "reviewAfter": "2027-02-05",
+    "status": "Bundled",
+    "handoffChecked": "2026-11-07",
+    "bundlePath": "bundles/security-audit",
+    "bundleSummary": "Complete skill and local setup notes",
+    "prompt": "Add Cloudflare Security Audit in this project using its prepared Collection bundle.\n\nBundle source: https://github.com/wuwwa/wuwwa-skills/tree/main/bundles/security-audit\n1. Read this project's instructions. Fetch bundle.json and the files it maps at one resolved repo revision, or read bundle-manifest.json from the supplied ZIP after extracting into a temporary directory.\n2. Read docs/references/security-audit.md. Compare before merging files. Skills use .agents/skills/ in Codex; adapt only to another host's documented project-local skill path. Read the installed SKILL.md explicitly for this task.\n3. Follow the bundled requirements and checks. Install runtime dependencies only for the requested implementation. Installing a skill alone does not authorize running its workflow.\n4. Record source URLs, resolved revision/versions, date and completed checks locally. Check upstream for changed compatibility or missing API details, and report inaccessible sources or unverified behavior instead of guessing."
+  },
+  {
+    "id": "liquid-glass-material",
+    "name": "Liquid Glass Material",
+    "kind": "Skill",
+    "category": "Effects",
+    "description": "Glass surfaces with adaptive tint and a thick, light-catching rim.",
+    "source": "https://x.com/Kubai087/status/2117782193108082923",
+    "platforms": ["Web"],
+    "attribution": "Kubai087; user-supplied prompt",
+    "handoffValidation": "Attached prompt preserved and skill metadata checked; advanced glass implementation untested",
+    "notes": [
+      "You want to try this soon.",
+      "Includes the full attached prompt alongside a concise implementation skill."
+    ],
+    "added": "2026-11-07",
+    "checked": "2026-11-07",
+    "reviewAfter": "2027-02-05",
+    "status": "Draft",
+    "handoffChecked": "2026-11-07",
+    "bundlePath": "bundles/liquid-glass-material",
+    "bundleSummary": "Complete skill and local setup notes",
+    "prompt": "Add Liquid Glass Material in this project using its prepared Collection bundle.\n\nBundle source: https://github.com/wuwwa/wuwwa-skills/tree/main/bundles/liquid-glass-material\n1. Read this project's instructions. Fetch bundle.json and the files it maps at one resolved repo revision, or read bundle-manifest.json from the supplied ZIP after extracting into a temporary directory.\n2. Read docs/references/liquid-glass-material.md. Compare before merging files. Skills use .agents/skills/ in Codex; adapt only to another host's documented project-local skill path. Read the installed SKILL.md explicitly for this task.\n3. Follow the bundled requirements and checks. Install runtime dependencies only for the requested implementation. Installing a skill alone does not authorize running its workflow.\n4. Record source URLs, resolved revision/versions, date and completed checks locally. Check upstream for changed compatibility or missing API details, and report inaccessible sources or unverified behavior instead of guessing."
+  },
+  {
+    "id": "wind-map-motion",
+    "name": "Wind Map Motion",
+    "kind": "Reference",
+    "category": "Motion",
+    "description": "Flowing weather traces over a dark map.",
+    "source": "https://x.com/willthomson__/status/2117673434066923965",
+    "platforms": ["Web"],
+    "attribution": "willthomson__",
+    "handoffValidation": "Post text and video poster checked; implementation not established",
+    "notes": [
+      "Saved as a visual motion reference.",
+      "Inspect the full clip before choosing a rendering technique."
+    ],
+    "added": "2026-11-07",
+    "checked": "2026-11-07",
+    "reviewAfter": "2027-02-05",
+    "status": "Saved",
+    "handoffChecked": "2026-11-07",
+    "bundlePath": "bundles/wind-map-motion",
+    "bundleSummary": "Saved reference brief",
+    "prompt": "Save Wind Map Motion in this project using its prepared Collection bundle.\n\nBundle source: https://github.com/wuwwa/wuwwa-skills/tree/main/bundles/wind-map-motion\n1. Read this project's instructions. Fetch bundle.json and the files it maps at one resolved repo revision, or read bundle-manifest.json from the supplied ZIP after extracting into a temporary directory.\n2. Read docs/references/wind-map-motion.md. Compare before merging files. Skills use .agents/skills/ in Codex; adapt only to another host's documented project-local skill path. Read the installed SKILL.md explicitly for this task.\n3. Save the reference brief only; implement or run it only when I request that work.\n4. Record source URLs, resolved revision/versions, date and completed checks locally. Check upstream for changed compatibility or missing API details, and report inaccessible sources or unverified behavior instead of guessing."
+  },
+  {
+    "id": "vibrant-design",
+    "name": "Vibrant Design",
+    "kind": "Reference",
+    "category": "Design",
+    "description": "Curated websites, sections, videos and UI inspiration.",
+    "source": "https://vibrant.design/",
+    "platforms": ["Web"],
+    "attribution": "Vibrant Design",
+    "handoffValidation": "Live site checked; original creators retain their media and designs",
+    "added": "2026-11-07",
+    "checked": "2026-11-07",
+    "reviewAfter": "2027-02-05",
+    "status": "Saved",
+    "handoffChecked": "2026-11-07",
+    "bundlePath": "bundles/vibrant-design",
+    "bundleSummary": "Saved reference brief",
+    "prompt": "Save Vibrant Design in this project using its prepared Collection bundle.\n\nBundle source: https://github.com/wuwwa/wuwwa-skills/tree/main/bundles/vibrant-design\n1. Read this project's instructions. Fetch bundle.json and the files it maps at one resolved repo revision, or read bundle-manifest.json from the supplied ZIP after extracting into a temporary directory.\n2. Read docs/references/vibrant-design.md. Compare before merging files. Skills use .agents/skills/ in Codex; adapt only to another host's documented project-local skill path. Read the installed SKILL.md explicitly for this task.\n3. Save the reference brief only; implement or run it only when I request that work.\n4. Record source URLs, resolved revision/versions, date and completed checks locally. Check upstream for changed compatibility or missing API details, and report inaccessible sources or unverified behavior instead of guessing."
+  },
+  {
+    "id": "macos-agent-vm",
+    "name": "macOS Agent VM",
+    "kind": "Reference",
+    "category": "Automation",
+    "description": "Run desktop agents in a separate macOS guest.",
+    "source": "https://developer.apple.com/documentation/virtualization/running-macos-in-a-virtual-machine-on-apple-silicon",
+    "platforms": ["macOS"],
+    "attribution": "User-supplied workflow; Apple Virtualization",
+    "handoffValidation": "Workflow saved with primary-source links; VM setup not tested",
+    "notes": [
+      "A macOS-specific workflow, with the agent running inside the guest.",
+      "The bundle records what to isolate and what to verify."
+    ],
+    "added": "2026-11-07",
+    "checked": "2026-11-07",
+    "reviewAfter": "2027-02-05",
+    "status": "Saved",
+    "handoffChecked": "2026-11-07",
+    "bundlePath": "bundles/macos-agent-vm",
+    "bundleSummary": "Saved reference brief",
+    "prompt": "Save macOS Agent VM in this project using its prepared Collection bundle.\n\nBundle source: https://github.com/wuwwa/wuwwa-skills/tree/main/bundles/macos-agent-vm\n1. Read this project's instructions. Fetch bundle.json and the files it maps at one resolved repo revision, or read bundle-manifest.json from the supplied ZIP after extracting into a temporary directory.\n2. Read docs/references/macos-agent-vm.md. Compare before merging files. Skills use .agents/skills/ in Codex; adapt only to another host's documented project-local skill path. Read the installed SKILL.md explicitly for this task.\n3. Save the reference brief only; implement or run it only when I request that work.\n4. Record source URLs, resolved revision/versions, date and completed checks locally. Check upstream for changed compatibility or missing API details, and report inaccessible sources or unverified behavior instead of guessing."
+  },
+  {
+    "id": "ascii-art",
+    "name": "ASCII / Dot Art",
+    "kind": "Skill",
+    "category": "Art",
+    "description": "Turn images into dot-lattice art and animated loops.",
+    "source": "https://github.com/0xSero/ascii-art",
+    "platforms": ["Any"],
+    "attribution": "0xSero",
+    "revision": "0968699a97e1807b54e7b7db2603c351490adaed",
+    "handoffValidation": "Upstream skill, engine and scripts bundled; image rendering not run",
+    "notes": [
+      "Includes the engine, scripts and local format references.",
+      "Some upstream examples need source images that are not included."
+    ],
+    "added": "2026-11-07",
+    "checked": "2026-11-07",
+    "reviewAfter": "2027-02-05",
+    "status": "Bundled",
+    "handoffChecked": "2026-11-07",
+    "bundlePath": "bundles/ascii-art",
+    "bundleSummary": "Complete skill and local setup notes",
+    "prompt": "Add ASCII / Dot Art in this project using its prepared Collection bundle.\n\nBundle source: https://github.com/wuwwa/wuwwa-skills/tree/main/bundles/ascii-art\n1. Read this project's instructions. Fetch bundle.json and the files it maps at one resolved repo revision, or read bundle-manifest.json from the supplied ZIP after extracting into a temporary directory.\n2. Read docs/references/ascii-art.md. Compare before merging files. Skills use .agents/skills/ in Codex; adapt only to another host's documented project-local skill path. Read the installed SKILL.md explicitly for this task.\n3. Follow the bundled requirements and checks. Install runtime dependencies only for the requested implementation. Installing a skill alone does not authorize running its workflow.\n4. Record source URLs, resolved revision/versions, date and completed checks locally. Check upstream for changed compatibility or missing API details, and report inaccessible sources or unverified behavior instead of guessing."
+  },
+  {
+    "id": "geist-serif",
+    "name": "Geist Serif",
+    "kind": "Library",
+    "category": "Typography",
+    "description": "An expressive display serif in the Geist family.",
+    "source": "https://vercel.com/blog/introducing-geist-serif",
+    "demo": "https://vercel.com/font",
+    "platforms": ["Web"],
+    "attribution": "Vercel; Evil Rabbit and Mark Davis",
+    "handoffValidation": "Official announcement and package example reviewed; font integration not tested",
+    "added": "2026-11-07",
+    "checked": "2026-11-07",
+    "reviewAfter": "2027-02-05",
+    "status": "Linked",
+    "handoffChecked": "2026-11-07",
+    "bundlePath": "bundles/geist-serif",
+    "bundleSummary": "Integration and setup notes",
+    "prompt": "Add Geist Serif in this project using its prepared Collection bundle.\n\nBundle source: https://github.com/wuwwa/wuwwa-skills/tree/main/bundles/geist-serif\n1. Read this project's instructions. Fetch bundle.json and the files it maps at one resolved repo revision, or read bundle-manifest.json from the supplied ZIP after extracting into a temporary directory.\n2. Read docs/references/geist-serif.md. Compare before merging files. Skills use .agents/skills/ in Codex; adapt only to another host's documented project-local skill path. Read the installed SKILL.md explicitly for this task.\n3. Follow the bundled requirements and checks. Install runtime dependencies only for the requested implementation. Installing a skill alone does not authorize running its workflow.\n4. Record source URLs, resolved revision/versions, date and completed checks locally. Check upstream for changed compatibility or missing API details, and report inaccessible sources or unverified behavior instead of guessing."
+  },
+  {
+    "id": "holographic-ticket",
+    "name": "Holographic Ticket",
+    "kind": "Reference",
+    "category": "Design",
+    "description": "Iridescent paper, perforated edges and a detachable stub.",
+    "source": "https://x.com/shirotatakajo/status/2116165057222762647",
+    "platforms": ["Web"],
+    "attribution": "shirotatakajo",
+    "handoffValidation": "Animated-media poster visually checked; implementation not recovered",
+    "notes": [
+      "A ticket reference you particularly liked.",
+      "Saved for its material, edges and composition."
+    ],
+    "added": "2026-11-07",
+    "checked": "2026-11-07",
+    "reviewAfter": "2027-02-05",
+    "status": "Saved",
+    "handoffChecked": "2026-11-07",
+    "bundlePath": "bundles/holographic-ticket",
+    "bundleSummary": "Saved reference brief",
+    "prompt": "Save Holographic Ticket in this project using its prepared Collection bundle.\n\nBundle source: https://github.com/wuwwa/wuwwa-skills/tree/main/bundles/holographic-ticket\n1. Read this project's instructions. Fetch bundle.json and the files it maps at one resolved repo revision, or read bundle-manifest.json from the supplied ZIP after extracting into a temporary directory.\n2. Read docs/references/holographic-ticket.md. Compare before merging files. Skills use .agents/skills/ in Codex; adapt only to another host's documented project-local skill path. Read the installed SKILL.md explicitly for this task.\n3. Save the reference brief only; implement or run it only when I request that work.\n4. Record source URLs, resolved revision/versions, date and completed checks locally. Check upstream for changed compatibility or missing API details, and report inaccessible sources or unverified behavior instead of guessing."
+  },
+  {
+    "id": "controlled-language-writing",
+    "name": "Clear Technical Explanations",
+    "kind": "Reference",
+    "category": "Writing",
+    "description": "A controlled-language prompt for clearer model explanations.",
+    "source": "https://x.com/karpathy/status/2105819303471976479",
+    "platforms": ["Any"],
+    "attribution": "Andrej Karpathy",
+    "handoffValidation": "Public excerpt checked; full long-form note unavailable",
+    "notes": [
+      "The recovered excerpt mentions ASD-STE100.",
+      "The local note includes a suggested prompt without claiming standards compliance."
+    ],
+    "added": "2026-11-07",
+    "checked": "2026-11-07",
+    "reviewAfter": "2027-02-05",
+    "status": "Saved",
+    "handoffChecked": "2026-11-07",
+    "bundlePath": "bundles/controlled-language-writing",
+    "bundleSummary": "Saved reference brief",
+    "prompt": "Save Clear Technical Explanations in this project using its prepared Collection bundle.\n\nBundle source: https://github.com/wuwwa/wuwwa-skills/tree/main/bundles/controlled-language-writing\n1. Read this project's instructions. Fetch bundle.json and the files it maps at one resolved repo revision, or read bundle-manifest.json from the supplied ZIP after extracting into a temporary directory.\n2. Read docs/references/controlled-language-writing.md. Compare before merging files. Skills use .agents/skills/ in Codex; adapt only to another host's documented project-local skill path. Read the installed SKILL.md explicitly for this task.\n3. Save the reference brief only; implement or run it only when I request that work.\n4. Record source URLs, resolved revision/versions, date and completed checks locally. Check upstream for changed compatibility or missing API details, and report inaccessible sources or unverified behavior instead of guessing."
+  },
+  {
+    "id": "land-or-water-eval",
+    "name": "Land or Water Eval",
+    "kind": "Reference",
+    "category": "Research",
+    "description": "Probe model geography with coordinate classifications.",
+    "source": "https://x.com/karpathy/status/2105909609487872075",
+    "platforms": ["Any"],
+    "attribution": "Andrej Karpathy; celestepoasts",
+    "handoffValidation": "Post text and quoted source checked; evaluation not run",
+    "notes": [
+      "Saved for an upcoming project.",
+      "Groups Karpathy’s explanation with celestepoasts’ original results."
+    ],
+    "added": "2026-11-07",
+    "checked": "2026-11-07",
+    "reviewAfter": "2027-02-05",
+    "status": "Saved",
+    "handoffChecked": "2026-11-07",
+    "bundlePath": "bundles/land-or-water-eval",
+    "bundleSummary": "Saved reference brief",
+    "prompt": "Save Land or Water Eval in this project using its prepared Collection bundle.\n\nBundle source: https://github.com/wuwwa/wuwwa-skills/tree/main/bundles/land-or-water-eval\n1. Read this project's instructions. Fetch bundle.json and the files it maps at one resolved repo revision, or read bundle-manifest.json from the supplied ZIP after extracting into a temporary directory.\n2. Read docs/references/land-or-water-eval.md. Compare before merging files. Skills use .agents/skills/ in Codex; adapt only to another host's documented project-local skill path. Read the installed SKILL.md explicitly for this task.\n3. Save the reference brief only; implement or run it only when I request that work.\n4. Record source URLs, resolved revision/versions, date and completed checks locally. Check upstream for changed compatibility or missing API details, and report inaccessible sources or unverified behavior instead of guessing."
   }
 ]

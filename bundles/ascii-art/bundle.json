@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "ascii-art",
+  "checked": "2026-11-07",
+  "reviewAfter": "2027-02-05",
+  "sources": [
+    "https://github.com/0xSero/ascii-art"
+  ],
+  "files": [
+    {
+      "source": "skills/ascii-art",
+      "destination": ".agents/skills/ascii-art"
+    },
+    {
+      "source": "bundles/ascii-art/guide.md",
+      "destination": "docs/references/ascii-art.md"
+    }
+  ]
+}

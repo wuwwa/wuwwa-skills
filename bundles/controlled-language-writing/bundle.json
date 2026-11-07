@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "controlled-language-writing",
+  "checked": "2026-11-07",
+  "reviewAfter": "2027-02-05",
+  "sources": [
+    "https://x.com/karpathy/status/2105819303471976479"
+  ],
+  "files": [
+    {
+      "source": "bundles/controlled-language-writing/guide.md",
+      "destination": "docs/references/controlled-language-writing.md"
+    }
+  ]
+}

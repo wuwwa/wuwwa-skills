@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "security-audit",
+  "checked": "2026-11-07",
+  "reviewAfter": "2027-02-05",
+  "sources": [
+    "https://github.com/cloudflare/security-audit-skill"
+  ],
+  "files": [
+    {
+      "source": "skills/security-audit",
+      "destination": ".agents/skills/security-audit"
+    },
+    {
+      "source": "bundles/security-audit/guide.md",
+      "destination": "docs/references/security-audit.md"
+    }
+  ]
+}

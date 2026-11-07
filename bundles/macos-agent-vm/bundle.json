@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "macos-agent-vm",
+  "checked": "2026-11-07",
+  "reviewAfter": "2027-02-05",
+  "sources": [
+    "https://developer.apple.com/documentation/virtualization/running-macos-in-a-virtual-machine-on-apple-silicon",
+    "https://github.com/vercel-labs/agent-desktop"
+  ],
+  "files": [
+    {
+      "source": "bundles/macos-agent-vm/guide.md",
+      "destination": "docs/references/macos-agent-vm.md"
+    }
+  ]
+}

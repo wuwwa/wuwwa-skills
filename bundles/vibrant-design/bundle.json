@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "vibrant-design",
+  "checked": "2026-11-07",
+  "reviewAfter": "2027-02-05",
+  "sources": [
+    "https://vibrant.design/"
+  ],
+  "files": [
+    {
+      "source": "bundles/vibrant-design/guide.md",
+      "destination": "docs/references/vibrant-design.md"
+    }
+  ]
+}

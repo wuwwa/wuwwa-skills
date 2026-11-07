@@ -4,7 +4,7 @@ export default tseslint.config(
   js.configs.recommended,
   ...tseslint.configs.recommended,
   {
-    files: ["app/src/App.tsx", "app/src/main.tsx"],
+    files: ["app/src/App.tsx", "app/src/main.tsx", "app/src/useFavorites.ts"],
     languageOptions: {
       globals: {
         window: "readonly",
@@ -14,6 +14,7 @@ export default tseslint.config(
         URL: "readonly",
         HTMLElement: "readonly",
         HTMLTextAreaElement: "readonly",
+        StorageEvent: "readonly",
       },
     },
   },

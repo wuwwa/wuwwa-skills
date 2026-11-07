@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "geist-serif",
+  "checked": "2026-11-07",
+  "reviewAfter": "2027-02-05",
+  "sources": [
+    "https://vercel.com/blog/introducing-geist-serif",
+    "https://x.com/rauchg/status/2116193690700198059"
+  ],
+  "files": [
+    {
+      "source": "bundles/geist-serif/guide.md",
+      "destination": "docs/references/geist-serif.md"
+    }
+  ]
+}

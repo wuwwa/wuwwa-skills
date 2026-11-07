@@ -1,0 +1,4 @@
+interface:
+  display_name: "Liquid Glass Material"
+  short_description: "Glass surfaces that preserve the existing design"
+  default_prompt: "Use $liquid-glass-material to refine these surfaces."

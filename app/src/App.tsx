@@ -1,19 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import {
-  ArrowUpRight,
-  Box,
-  Circle,
-  Code2,
-  Camera,
-  Layers,
-  Library,
-  Moon,
-  Search,
-  Sparkles,
-  Sun,
-  Type,
-  Waves,
-} from "lucide-react";
+import { ArrowUpRight, Library, Moon, Search, Star, Sun } from "lucide-react";
 import { Button } from "./components/arc/button/button";
 import { SearchField } from "./components/arc/search-field/search-field";
 import SegmentedControl from "./components/arc/segmented-control/segmented-control";
@@ -22,6 +8,7 @@ import { Select } from "./components/arc/select/select";
 import { EmptyState } from "./components/arc/empty-state/empty-state";
 import { Textarea } from "./components/arc/textarea/textarea";
 import catalog from "../../catalog.json";
+import { useFavorites } from "./useFavorites";
 
 type Item = {
   id: string;
@@ -44,36 +31,19 @@ type Item = {
   bundleSummary: string;
   notes?: string[];
   revision?: string;
+  platforms?: string[];
 };
 const items: Item[] = catalog;
-const categories = [
-  "All",
-  "Design",
-  "Components",
-  "Motion",
-  "3D",
-  "Effects",
-  "Branding",
-  "Engineering",
-  "Computer vision",
-];
+const categories = ["All", ...new Set(items.map((item) => item.category))];
+const platforms = ["All", "Web", "macOS", "Windows", "Linux"];
 const types = [
   { value: "All", label: "All" },
   { value: "Skill", label: "Skills" },
   { value: "Library", label: "Libraries" },
   { value: "Tool", label: "Tools" },
   { value: "Repo", label: "Repos" },
+  { value: "Reference", label: "References" },
 ];
-const symbols = {
-  Design: Type,
-  Components: Layers,
-  Motion: Circle,
-  "3D": Box,
-  Effects: Waves,
-  Branding: Sparkles,
-  Engineering: Code2,
-  "Computer vision": Camera,
-};
 const formatDate = (date: string) =>
   new Intl.DateTimeFormat("en-US", {
     month: "short",
@@ -157,7 +127,8 @@ function Details({ item, mode }: { item: Item; mode: string }) {
       prompt.current?.select();
     }
   };
-  const HandoffContainer = item.kind === "Repo" ? "details" : "div";
+  const reference = item.kind === "Repo" || item.kind === "Reference";
+  const HandoffContainer = reference ? "details" : "div";
   return (
     <div className="details">
       {item.notes && (
@@ -174,7 +145,7 @@ function Details({ item, mode }: { item: Item; mode: string }) {
       {mode === "preview" &&
         (item.demo === "design" ? <DesignDemo /> : <MotionDemo />)}
       <HandoffContainer className="repo-handoff">
-        {item.kind === "Repo" && <summary>Copy a project reference</summary>}
+        {reference && <summary>Copy a project reference</summary>}
         <Textarea
           label="Project handoff"
           id="agent-prompt"
@@ -206,10 +177,10 @@ function Details({ item, mode }: { item: Item; mode: string }) {
               : ""}
         </p>
       </HandoffContainer>
-      {item.kind === "Repo" && (
+      {reference && (
         <div className="detail-actions">
           <a href={item.source} target="_blank" rel="noreferrer">
-            Open repo
+            {item.kind === "Repo" ? "Open repo" : "Open reference"}
             <ArrowUpRight size={16} aria-hidden="true" />
           </a>
           <a
@@ -244,6 +215,12 @@ function Details({ item, mode }: { item: Item; mode: string }) {
           <dd>{formatDate(item.reviewAfter)}</dd>
           <dt>Status</dt>
           <dd>{today > item.reviewAfter ? "Needs review" : item.status}</dd>
+          {item.platforms && (
+            <>
+              <dt>Platforms</dt>
+              <dd>{item.platforms.join(", ")}</dd>
+            </>
+          )}
           {item.attribution && (
             <>
               <dt>Creator</dt>
@@ -267,15 +244,30 @@ export default function App() {
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("All");
   const [kind, setKind] = useState("All");
+  const [platform, setPlatform] = useState("All");
+  const [starredOnly, setStarredOnly] = useState(false);
+  const {
+    favorites,
+    ready: favoritesReady,
+    storageError,
+    toggleFavorite,
+  } = useFavorites();
   const [theme, setTheme] = useState("light");
   const [ready, setReady] = useState(false);
   const [selected, setSelected] = useState<Item | null>(null);
   const [mode, setMode] = useState("use");
   const [open, setOpen] = useState(false);
   const lastTrigger = useRef<HTMLElement | null>(null);
+  const starredFilter = useRef<HTMLButtonElement | null>(null);
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     setQuery(params.get("q") || "");
+    setPlatform(
+      platforms.includes(params.get("platform") || "")
+        ? params.get("platform")!
+        : "All",
+    );
+    setStarredOnly(params.get("starred") === "1");
     setCategory(
       categories.includes(params.get("category") || "")
         ? params.get("category")!
@@ -300,12 +292,14 @@ export default function App() {
       ["q", query],
       ["category", category === "All" ? "" : category],
       ["type", kind === "All" ? "" : kind],
+      ["platform", platform === "All" ? "" : platform],
+      ["starred", starredOnly ? "1" : ""],
     ]) {
       if (value) url.searchParams.set(key, value);
       else url.searchParams.delete(key);
     }
     window.history.replaceState(null, "", url);
-  }, [query, category, kind, ready]);
+  }, [query, category, kind, platform, starredOnly, ready]);
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
   }, [theme]);
@@ -313,6 +307,11 @@ export default function App() {
     (item) =>
       (category === "All" || item.category === category) &&
       (kind === "All" || item.kind === kind) &&
+      (platform === "All" ||
+        !item.platforms ||
+        item.platforms.includes("Any") ||
+        item.platforms.includes(platform)) &&
+      (!starredOnly || favorites.includes(item.id)) &&
       `${item.name} ${item.description} ${item.category} ${item.kind} ${item.attribution || ""}`
         .toLowerCase()
         .includes(query.trim().toLowerCase()),
@@ -384,6 +383,15 @@ export default function App() {
                 label: value === "All" ? "All categories" : value,
               }))}
             />
+            <Select
+              label="Platform"
+              value={platform}
+              onValueChange={setPlatform}
+              options={platforms.map((value) => ({
+                value,
+                label: value === "All" ? "All platforms" : value,
+              }))}
+            />
           </div>
           <div className="view-bar">
             <SegmentedControl
@@ -392,18 +400,57 @@ export default function App() {
               onValueChange={setKind}
               options={types}
             />
+            <Button
+              ref={starredFilter}
+              variant={starredOnly ? "secondary" : "ghost"}
+              aria-pressed={starredOnly}
+              onClick={() => setStarredOnly(!starredOnly)}
+            >
+              <Star
+                size={16}
+                fill={starredOnly ? "currentColor" : "none"}
+                aria-hidden="true"
+              />
+              Starred <span className="favorite-count">{favorites.length}</span>
+            </Button>
           </div>
+          {storageError && (
+            <p className="storage-message" role="status">
+              Stars can’t be saved in this browser. Your current choices remain
+              available until you close this page.
+            </p>
+          )}
+          {starredOnly && !storageError && (
+            <p className="muted favorites-hint">
+              Stars are saved in this browser.
+            </p>
+          )}
           <div className="collection">
             {shown.map((item) => {
-              const Symbol = symbols[item.category as keyof typeof symbols];
               return (
                 <article className="item" key={item.id}>
-                  <Symbol
-                    className="item-symbol"
-                    size={24}
-                    strokeWidth={1.5}
-                    aria-hidden="true"
-                  />
+                  <Button
+                    className="star-button"
+                    variant="ghost"
+                    aria-pressed={favorites.includes(item.id)}
+                    aria-label={`${favorites.includes(item.id) ? "Unstar" : "Star"} ${item.name}`}
+                    title={`${favorites.includes(item.id) ? "Unstar" : "Star"} ${item.name}`}
+                    disabled={!favoritesReady}
+                    onClick={() => {
+                      toggleFavorite(item.id);
+                      if (starredOnly && favorites.includes(item.id))
+                        starredFilter.current?.focus();
+                    }}
+                  >
+                    <Star
+                      size={18}
+                      strokeWidth={1.5}
+                      fill={
+                        favorites.includes(item.id) ? "currentColor" : "none"
+                      }
+                      aria-hidden="true"
+                    />
+                  </Button>
                   <div className="item-name">
                     <h2>{item.name}</h2>
                     <p>{item.description}</p>
@@ -428,14 +475,14 @@ export default function App() {
                         Demo
                         <ArrowUpRight size={14} aria-hidden="true" />
                       </a>
-                    ) : item.kind === "Repo" ? (
+                    ) : item.kind === "Repo" || item.kind === "Reference" ? (
                       <a
                         href={item.source}
                         target="_blank"
                         rel="noreferrer"
-                        aria-label={`Open ${item.name} repository`}
+                        aria-label={`Open ${item.name} ${item.kind === "Repo" ? "repository" : "reference"}`}
                       >
-                        Open repo
+                        {item.kind === "Repo" ? "Open repo" : "Reference"}
                         <ArrowUpRight size={14} aria-hidden="true" />
                       </a>
                     ) : null}
@@ -443,12 +490,14 @@ export default function App() {
                       variant="secondary"
                       onClick={() => show(item, "use")}
                       aria-label={
-                        item.kind === "Repo"
+                        item.kind === "Repo" || item.kind === "Reference"
                           ? `View ${item.name} notes`
                           : `Add ${item.name} to project`
                       }
                     >
-                      {item.kind === "Repo" ? "View notes" : "Add to project"}
+                      {item.kind === "Repo" || item.kind === "Reference"
+                        ? "View notes"
+                        : "Add to project"}
                     </Button>
                   </div>
                 </article>
@@ -466,6 +515,8 @@ export default function App() {
                       setQuery("");
                       setCategory("All");
                       setKind("All");
+                      setPlatform("All");
+                      setStarredOnly(false);
                     }}
                   >
                     Clear filters

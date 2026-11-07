@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "liquid-glass-material",
+  "checked": "2026-11-07",
+  "reviewAfter": "2027-02-05",
+  "sources": [
+    "https://x.com/Kubai087/status/2117782193108082923"
+  ],
+  "files": [
+    {
+      "source": "skills/liquid-glass-material",
+      "destination": ".agents/skills/liquid-glass-material"
+    },
+    {
+      "source": "bundles/liquid-glass-material/guide.md",
+      "destination": "docs/references/liquid-glass-material.md"
+    }
+  ]
+}
