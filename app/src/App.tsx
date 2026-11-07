@@ -80,7 +80,6 @@ function DesignDemo() {
         </p>
         <span className="sample-action">Create a project</span>
       </div>
-      <p className="muted">Same content. Clearer hierarchy and less clutter.</p>
     </div>
   );
 }
@@ -103,9 +102,6 @@ function MotionDemo() {
           ? `Added to ${collection}`
           : "Open the menu and choose a collection."}
       </p>
-      <p className="muted">
-        A working Arc select with motion and keyboard controls.
-      </p>
     </div>
   );
 }
@@ -115,6 +111,7 @@ function Details({ item, mode }: { item: Item; mode: string }) {
   const [copyError, setCopyError] = useState(false);
   const [today, setToday] = useState("");
   const prompt = useRef<HTMLTextAreaElement>(null);
+  const moreDetails = useRef<HTMLDetailsElement>(null);
   useEffect(() => {
     setToday(new Date().toISOString().slice(0, 10));
   }, []);
@@ -124,125 +121,101 @@ function Details({ item, mode }: { item: Item; mode: string }) {
       setCopied(true);
       setCopyError(false);
     } catch {
+      setCopied(false);
       setCopyError(true);
-      prompt.current?.focus();
-      prompt.current?.select();
+      if (moreDetails.current) moreDetails.current.open = true;
+      window.requestAnimationFrame(() => {
+        prompt.current?.focus();
+        prompt.current?.select();
+      });
     }
   };
-  const reference = item.kind === "Repo" || item.kind === "Reference";
-  const HandoffContainer = reference ? "details" : "div";
   return (
     <div className="details">
-      <dl className="quick-guide">
-        <dt>Use when</dt>
-        <dd>{item.useWhen}</dd>
-        <dt>You get</dt>
-        <dd>{item.youGet}</dd>
-      </dl>
       {mode === "preview" &&
         (item.demo === "design" ? <DesignDemo /> : <MotionDemo />)}
-      <HandoffContainer className="repo-handoff">
-        {reference && <summary>Copy a project reference</summary>}
-        <Textarea
-          label="Project handoff"
-          id="agent-prompt"
-          ref={prompt}
-          value={item.prompt}
-          readOnly
-          rows={6}
-        />
-        <div className="detail-actions">
-          <Button variant="primary" onClick={copy}>
-            {copied ? "Handoff copied" : "Copy handoff"}
-          </Button>
-          <a
-            href={`${import.meta.env.BASE_URL}bundles/${item.id}.zip`}
-            download
-          >
-            Download bundle
-          </a>
-          <a href={item.source} target="_blank" rel="noreferrer">
-            {item.kind === "Repo" ? "Open repo" : "View source"}
-            <ArrowUpRight size={16} aria-hidden="true" />
-          </a>
-        </div>
-        <p className="copy-status" role="status">
-          {copyError
-            ? "Copy is unavailable. The prompt is selected for you to copy manually."
-            : copied
-              ? "Ready to paste into your agent."
-              : ""}
-        </p>
-      </HandoffContainer>
-      {reference && (
-        <div className="detail-actions">
-          <a href={item.source} target="_blank" rel="noreferrer">
-            {item.kind === "Repo" ? "Open repo" : "Open reference"}
-            <ArrowUpRight size={16} aria-hidden="true" />
-          </a>
-          <a
-            href={`${import.meta.env.BASE_URL}bundles/${item.id}.zip`}
-            download
-          >
-            Download notes
-          </a>
-        </div>
-      )}
-      {item.demo && !isLocal(item) && (
-        <a
-          className="demo-link"
-          href={item.demo}
-          target="_blank"
-          rel="noreferrer"
+      <div className="detail-actions">
+        <Button
+          className="copy-button"
+          variant="primary"
+          onClick={copy}
+          aria-live="polite"
         >
-          Open creator’s demo
-          <ArrowUpRight size={16} aria-hidden="true" />
+          {copied ? "Copied" : "Copy instructions"}
+        </Button>
+        <a
+          href={`${import.meta.env.BASE_URL}bundles/${item.id}.zip`}
+          download
+        >
+          Download files
         </a>
-      )}
-      {item.notes && (
-        <details className="source-details">
-          <summary>Notes</summary>
-          <ul className="repo-notes">
-            {item.notes.map((note) => (
-              <li key={note}>{note}</li>
-            ))}
-          </ul>
-        </details>
-      )}
-      <details className="source-details">
-        <summary>Source & dates</summary>
-        <dl className="dates">
-          <dt>Handoff checked</dt>
-          <dd>{formatDate(item.handoffChecked)}</dd>
-          <dt>Added</dt>
-          <dd>{formatDate(item.added)}</dd>
-          <dt>{item.checked ? "Links checked" : "Updated"}</dt>
-          <dd>{formatDate(item.checked || item.updated || item.added)}</dd>
-          <dt>Review after</dt>
-          <dd>{formatDate(item.reviewAfter)}</dd>
-          <dt>Status</dt>
-          <dd>{today > item.reviewAfter ? "Needs review" : item.status}</dd>
-          {item.platforms && (
-            <>
-              <dt>Platforms</dt>
-              <dd>{item.platforms.join(", ")}</dd>
-            </>
+      </div>
+      <details className="source-details" ref={moreDetails}>
+        <summary>Details</summary>
+        <div className="detail-content">
+          <Textarea
+            label="Agent instructions"
+            id="agent-prompt"
+            ref={prompt}
+            value={item.prompt}
+            readOnly
+            rows={6}
+            error={
+              copyError ? "Copy the selected instructions manually." : undefined
+            }
+          />
+          <div className="detail-links">
+            <a href={item.source} target="_blank" rel="noreferrer">
+              View source
+              <ArrowUpRight size={16} aria-hidden="true" />
+            </a>
+            {item.demo && !isLocal(item) && (
+              <a href={item.demo} target="_blank" rel="noreferrer">
+                Creator’s demo
+                <ArrowUpRight size={16} aria-hidden="true" />
+              </a>
+            )}
+          </div>
+          {item.notes && (
+            <ul className="repo-notes">
+              {item.notes.map((note) => (
+                <li key={note}>{note}</li>
+              ))}
+            </ul>
           )}
-          {item.attribution && (
-            <>
-              <dt>Creator</dt>
-              <dd>{item.attribution}</dd>
-            </>
-          )}
-          {item.revision && (
-            <>
-              <dt>Revision</dt>
-              <dd className="revision">{item.revision.slice(0, 12)}</dd>
-            </>
-          )}
-        </dl>
+          <p className="muted">{item.handoffValidation}.</p>
+          <dl className="dates">
+            <dt>Handoff checked</dt>
+            <dd>{formatDate(item.handoffChecked)}</dd>
+            <dt>Added</dt>
+            <dd>{formatDate(item.added)}</dd>
+            <dt>{item.checked ? "Links checked" : "Updated"}</dt>
+            <dd>{formatDate(item.checked || item.updated || item.added)}</dd>
+            <dt>Review after</dt>
+            <dd>{formatDate(item.reviewAfter)}</dd>
+            <dt>Status</dt>
+            <dd>{today > item.reviewAfter ? "Needs review" : item.status}</dd>
+            {item.platforms && (
+              <>
+                <dt>Platforms</dt>
+                <dd>{item.platforms.join(", ")}</dd>
+              </>
+            )}
+            {item.attribution && (
+              <>
+                <dt>Creator</dt>
+                <dd>{item.attribution}</dd>
+              </>
+            )}
+            {item.revision && (
+              <>
+                <dt>Revision</dt>
+                <dd className="revision">{item.revision.slice(0, 12)}</dd>
+              </>
+            )}
+          </dl>
+        </div>
       </details>
-      <p className="muted">{item.handoffValidation}.</p>
     </div>
   );
 }

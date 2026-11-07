@@ -14,6 +14,7 @@ export default tseslint.config(
         URL: "readonly",
         HTMLElement: "readonly",
         HTMLTextAreaElement: "readonly",
+        HTMLDetailsElement: "readonly",
         StorageEvent: "readonly",
       },
     },

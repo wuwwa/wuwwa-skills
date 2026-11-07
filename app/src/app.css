@@ -59,7 +59,7 @@ h3 {
 }
 .header-actions a,
 .detail-actions a,
-.demo-link,
+.detail-links a,
 footer a,
 .item-actions a {
   display: inline-flex;
@@ -172,39 +172,30 @@ footer {
   gap: 16px;
 }
 .skill-modal[role="dialog"] {
-  width: min(calc(100% - 32px), 560px);
+  width: min(calc(100% - 32px), 480px);
 }
 .details textarea {
   overflow-wrap: anywhere;
 }
-.quick-guide {
-  display: grid;
-  grid-template-columns: 72px minmax(0, 1fr);
-  gap: 8px 16px;
-  margin: 0;
-}
-.quick-guide dt {
-  color: var(--text-secondary);
-}
-.quick-guide dd {
-  margin: 0;
-  overflow-wrap: anywhere;
-}
-.detail-actions {
+.detail-actions,
+.detail-links {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: 16px;
 }
-.copy-status {
-  min-height: 20px;
-  color: var(--text-secondary);
+.copy-button {
+  min-width: 160px;
+}
+.detail-content {
+  display: grid;
+  gap: 16px;
+  padding-top: 8px;
 }
 .dates {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
-  padding-top: 16px;
   margin: 0;
   font-size: var(--text-sm);
   font-variant-numeric: tabular-nums;
@@ -214,14 +205,6 @@ footer {
   padding-left: 20px;
   display: grid;
   gap: 8px;
-}
-.repo-handoff > summary {
-  min-height: 44px;
-  cursor: pointer;
-  color: var(--text-secondary);
-}
-.repo-handoff > .detail-actions {
-  margin-top: 16px;
 }
 .source-details summary {
   min-height: 44px;
