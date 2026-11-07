@@ -4,6 +4,50 @@ A personal collection of skills and useful agent workflows.
 
 Started: **2026-11-07**. Guidance belongs to the models and tools it was tested with; keep that context visible as capabilities change.
 
+## Collection
+
+| Skill | Purpose | Added | Status |
+| --- | --- | --- | --- |
+| [UI Design Polish](skills/ui-design-polish/SKILL.md) | Contextual visual restraint and purposeful interaction motion, adapted from two supplied design screenshots. | 2026-11-07 | Draft; behavioral evaluation pending. |
+
+## Use these skills in projects
+
+Keep the master copies in this repository. For repeatable project work, install or copy the chosen skill folder, including its references, into the project's `.agents/skills/` directory. Record the upstream commit in that project's documentation and update deliberately so later edits here do not silently change ongoing work.
+
+For example:
+
+```text
+your-project/
+  AGENTS.md
+  .agents/skills/ui-design-polish/
+    SKILL.md
+    agents/openai.yaml
+    references/
+```
+
+Add a short instruction to that project's `AGENTS.md`:
+
+```markdown
+For UI design or interaction polish, read
+`.agents/skills/ui-design-polish/SKILL.md` and its relevant linked references.
+Apply the guidance within this project's design system and product requirements.
+```
+
+Then ask the agent to use the installed skill, for example:
+
+```text
+Use $ui-design-polish to refine this screen's hierarchy and interactions.
+Preserve the existing brand and focus on the checkout flow.
+```
+
+For a personal default across projects, a user-level installation in `~/.agents/skills/ui-design-polish/` is an alternative. Prefer a project copy when collaborators or remote agents need the same version. Avoid installing the same named skill in multiple scopes unintentionally.
+
+A GitHub URL by itself does not install the skill or load its instructions. For a one-off task, explicitly tell the agent to read `skills/ui-design-polish/SKILL.md` and the relevant references from this repository at a chosen commit. That depends on repository access and requires repeating the instruction in other environments.
+
+Project `AGENTS.md` files should hold local requirements such as brand choices, supported devices, accessibility expectations, and build commands. The reusable skill holds the longer design workflow. Links to project screenshots or other visual references provide the direction for a particular product.
+
+Local discovery and invocation details above follow [OpenAI's skills documentation](https://learn.chatgpt.com/docs/build-skills) and [AGENTS.md documentation](https://learn.chatgpt.com/docs/agent-configuration/agents-md), checked **2026-11-07**. Other agents may use different skill locations and instruction files.
+
 ## Add a skill
 
 1. Create `skills/<skill-name>/SKILL.md` using [the starter template](templates/SKILL.md.template). Replace its example name, description, dates, and instructions.
