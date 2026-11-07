@@ -1,4 +1,4 @@
-# WuWwa’s collection
+# Collection
 
 Standalone skill browser built with [Arc UI](https://uiarc.dev/components). Run `npm install` then `npm run dev`.
 

@@ -6,7 +6,7 @@
 - Use `templates/SKILL.md.template`. Track creation, update, review date, and status with quoted `YYYY-MM-DD` dates.
 - Preserve source attribution. Record tested models and review outcomes only after actual testing.
 - Flag guidance for review when its model/tool assumptions change or its review date passes. Deprecate only with a dated reason.
-- WuWwa’s collection is a standalone app in `app/`. Do not deploy it under the personal site or enable GitHub Pages without an explicit request.
+- Collection is a standalone app in `app/`. Do not deploy it under the personal site or enable GitHub Pages without an explicit request.
 - Use Arc UI's free components and foundation for the interface. Preserve upstream files and attribution.
 - Apply the collection's relevant skills to the app itself: UI Design for clarity, UI Motion for transitions, and Arc for components. Prefer centered modals with blurred backdrops for details and previews. Use specialist effects only when the task calls for them.
 - The catalog lives in `catalog.json`; keep README links in sync. Label external libraries/tools accurately, retain source links and checked dates, and distinguish local demos from external demos.

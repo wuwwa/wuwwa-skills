@@ -256,7 +256,7 @@ export default function App() {
         <header className="header">
           <a className="brand" href="./">
             <Library size={24} strokeWidth={1.75} aria-hidden="true" />
-            WuWwa’s collection
+            Collection
           </a>
           <div className="header-actions">
             <a
@@ -387,14 +387,6 @@ export default function App() {
         </main>
         <footer>
           <span>Pick a skill. Try it. Make something.</span>
-          <a
-            href="https://uiarc.dev/components"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Built with Arc UI
-            <ArrowUpRight size={14} aria-hidden="true" />
-          </a>
         </footer>
       </div>
       <Dialog open={open} onOpenChange={setOpen}>
