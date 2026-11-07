@@ -1,6 +1,6 @@
 # Skill shelf
 
-**[Browse the collection](https://wuwwa.github.io/wuwwa-skills/)** — filter, try a demo, copy a prompt.
+Standalone skill browser built with [Arc UI](https://uiarc.dev/components). Run `npm install` then `npm run dev`.
 
 | Pick | Category | Type | Added |
 | --- | --- | --- | --- |
@@ -14,6 +14,6 @@
 
 Tell your agent: `Pull ui-design-polish from wuwwa/wuwwa-skills into this project.`
 
-Add entries in [docs/catalog.json](docs/catalog.json). External projects link to their own demos.
+Add entries in [catalog.json](catalog.json). External projects link to their own demos.
 
-Local preview: `python -m http.server 8765 --directory docs`.
+`npm run build` produces `dist/` for standalone hosting. No personal-site deployment is configured.
